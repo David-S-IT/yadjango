@@ -1,0 +1,13 @@
+name: black Lint
+
+on: [ push, pull_request ]
+
+jobs:
+  black-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Black Check
+        uses: jpetrucciani/black-check@master
+        with:
+          path: '.'
