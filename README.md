@@ -17,7 +17,7 @@ https://www.python.org/ftp/python/3.7.9/python-3.7.9.exe
 git clone https://github.com/David-S-IT/yadjango.git
 cd yadjango
 ```
-Если у вас появляется ошибка, что нет команды ```git```, то вам нужно установить Git Bash.
+Если у вас появляется ошибка, что нет команды ```git```, то вам нужно установить Git Bash: https://gitforwindows.org/
 #### 3. Cоздать виртуальное окружение в папке с проектом
 - Linux: ```python3.7 -m venv venv```
 - Windows: ```python -m venv venv```
@@ -42,3 +42,4 @@ print(get_random_secret_key())
 Перейти в папку ya с файлом manage.py: ```cd ya```
 - Linux: ```python3.7 manage.py runserver```
 - Windows: ```python manage.py runserver```
+#### 8. Сайт доступен по адресу: http://127.0.0.1:8000/
