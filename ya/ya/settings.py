@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-from dotenv import load_dotenv, find_dotenv
-
+from pathlib import Path
+from dotenv import find_dotenv, load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("SECRET_KEY", True)
 
 ALLOWED_HOSTS = []
 
@@ -42,9 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "homepage.apps.HomepageConfig",
-    "catalog.apps.CatalogConfig",
     "about.apps.AboutConfig",
+    "catalog.apps.CatalogConfig",
+    "homepage.apps.HomepageConfig",
 ]
 
 MIDDLEWARE = [

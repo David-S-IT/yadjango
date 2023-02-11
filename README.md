@@ -1,6 +1,7 @@
 # yadjango
 
 [![flake8 Lint](https://github.com/David-S-IT/yadjango/actions/workflows/%20py-actions.yml/badge.svg)](https://github.com/David-S-IT/yadjango/actions/workflows/%20py-actions.yml)
+[![black Lint](https://github.com/David-S-IT/yadjango/actions/workflows/jpetrucciani.yml/badge.svg)](https://github.com/David-S-IT/yadjango/actions/workflows/jpetrucciani.yml)
 ![](https://img.shields.io/badge/django-3.2-green)
 ![](https://img.shields.io/badge/python-3.7-brightgreen)
 
