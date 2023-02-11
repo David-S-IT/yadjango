@@ -29,9 +29,9 @@ cd yadjango
 ```.\venv\Scripts\activate.bat```
 #### 5. Установить зависимости
 Перейти в папку requirements: ```cd requirements```
-- Для запуска сервера: ```pip install -r requirements_prod.txt```
-- Для разработки: ```pip install -r requirements_dev.txt```
-- Для тестов: ```pip install -r requirements_tests.txt```
+- Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
+- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```
+- Дополнительный - для тестов: ```pip install -r requirements_test.txt```
 #### 6. Для генерации SECRET_KEY выполнить:
 ```
 from django.core.management.utils import get_random_secret_key
