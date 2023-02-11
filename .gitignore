@@ -127,9 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-# Environments
-*.env
-*.venv
-# PyCharm settings
+
+# PyCharm, VS Code, mac settings
 .idea/
+.vscode/
+.DS_Store
 
