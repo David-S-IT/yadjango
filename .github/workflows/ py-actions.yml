@@ -16,4 +16,4 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          plugins: "flake8-import-order pep8-naming flake8-quotes"
+          plugins: "pep8-naming flake8-isort flake8-quotes flake8-broken-line"
