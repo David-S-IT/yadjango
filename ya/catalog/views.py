@@ -11,3 +11,7 @@ def item_detail(request, pk):
 
 def re_digit(request, pk):
     return HttpResponse(f'Номер {pk}')
+
+
+def converter_re_digit(request, pk):
+    return HttpResponse(f'Номер {pk}')
