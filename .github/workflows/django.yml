@@ -27,4 +27,5 @@ jobs:
         pip install -r requirements/requirements_prod.txt
     - name: Run Tests
       run: |
+        cd ya
         python manage.py test
