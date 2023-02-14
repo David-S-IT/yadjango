@@ -10,8 +10,8 @@ def item_detail(request, pk):
 
 
 def re_digit(request, pk):
-    return HttpResponse(f'Номер {pk}')
+    return HttpResponse(f'<body>Номер {pk}</body>')
 
 
 def converter_re_digit(request, pk):
-    return HttpResponse(f'Номер {pk}')
+    return HttpResponse(f'<body>Номер {pk}</body>')
