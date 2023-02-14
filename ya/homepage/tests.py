@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from bs4 import BeautifulSoup
+
 from django.test import Client, TestCase
 
 
