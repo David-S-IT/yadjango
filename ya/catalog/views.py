@@ -7,3 +7,7 @@ def item_list(request):
 
 def item_detail(request, pk):
     return HttpResponse(f'<body>Подробно элемент: {pk}</body>')
+
+
+def re_digit(request, pk):
+    return HttpResponse(f'Номер {pk}')
