@@ -5,3 +5,4 @@ python-dotenv==0.21.1
 pytz==2022.7.1
 sqlparse==0.4.3
 typing_extensions==4.4.0
+django-debug-toolbar==3.8.1
