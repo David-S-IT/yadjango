@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.cache import cache
 
@@ -20,10 +20,9 @@ class ReverseTextMiddleware:
 
             if response.status_code in (200, 418) and data['count'] % 10 == 0:
                 html = response.content.decode('utf-8')
-                if 'html' in str(html):
-                    soup = BeautifulSoup(html, 'html.parser')
-                    body_content = soup.find('body').get_text()
-                    response.content = ''.join(reversed(body_content))
-                else:
-                    response.content = ''.join(reversed(html))
+                response.content = ''.join(reversed(html))
+
+                # soup = BeautifulSoup(html, 'html.parser')
+                # body_content = soup.find('body').get_text()
+                # response.content = ''.join(reversed(body_content))
         return response
