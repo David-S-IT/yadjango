@@ -29,6 +29,7 @@ class MiddlewareReverseTextTests(TestCase):
         Тестирую реверс в middleware текста из HttpResponse.
         """
         url = '/coffee/'
+        cache.clear()
         for i in range(9):
             key = 'count-requests'
             data = cache.get(key)
