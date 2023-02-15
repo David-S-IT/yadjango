@@ -26,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements/requirements_prod.txt
     - name: Install Additional Dependencies
-      if: ${{ env.DEBUG }}
+      if: ${{ env.DEBUG == 'true' }}
       run: |
         pip install -r requirements/requirements_dev.txt
     - name: Run Tests
