@@ -3,7 +3,7 @@
 [![flake8 Lint](https://github.com/David-S-IT/yadjango/actions/workflows/py-actions-flake8.yml/badge.svg)](https://github.com/David-S-IT/yadjango/actions/workflows/py-actions-flake8.yml)
 [![black Lint](https://github.com/David-S-IT/yadjango/actions/workflows/jpetrucciani_black.yml/badge.svg)](https://github.com/David-S-IT/yadjango/actions/workflows/jpetrucciani_black.yml)
 [![django tests](https://github.com/David-S-IT/yadjango/actions/workflows/django_tests.yml/badge.svg)](https://github.com/David-S-IT/yadjango/actions/workflows/django_tests.yml)
-![](https://img.shields.io/badge/django-3.2-green)
+![](https://img.shields.io/badge/django-3.2.17-green)
 ![](https://img.shields.io/badge/python-3.7-brightgreen)
 
 ## Запуск проекта в dev-режиме
