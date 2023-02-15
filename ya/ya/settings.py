@@ -62,7 +62,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'ya.middleware.ReverseTextMiddleware',
 ]
+
+MIDDLEWARE_REVERSE_TEXT = True
 
 ROOT_URLCONF = 'ya.urls'
 
