@@ -33,12 +33,17 @@ cd yadjango
 - Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
 - Дополнительный - для разработки: ```pip install -r requirements_dev.txt```
 - Дополнительный - для тестов: ```pip install -r requirements_test.txt```
-#### 6. Для генерации SECRET_KEY выполнить:
+#### 6. Для генерации SECRET_KEY:
+Открыть Python:  
+- Linux: ```python3.7```
+- Windows: ```python```
+Выполнить:  
 ```
 from django.core.management.utils import get_random_secret_key
 print(get_random_secret_key())
 ```
-Вставить значение ключа в settings.py  SECRET_KEY="..."
+Вставить значение ключа в settings.py  SECRET_KEY="..."  
+Для закрытия Python выполнить: ```quit()```
 #### 7. Запуск сервера
 Выйти из папки requirements: ```cd ..```  
 Перейти в папку ya с файлом manage.py: ```cd ya```
