@@ -25,5 +25,5 @@ class ReverseTextMiddleware:
                     body_content = soup.find('body').get_text()
                     response.content = ''.join(reversed(body_content))
                 else:
-                    response.content = ''.join(reversed(html_))
+                    response.content = ''.join(reversed(html))
         return response
