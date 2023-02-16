@@ -7,8 +7,10 @@ register_converter(converter.PositiveIntegerConverter, 'PosIntConv')
 app_name = 'catalog'
 
 urlpatterns = [
-    path('', views.item_list, name='catalog'),
-    path('<int:pk>/', views.item_detail, name='catalog_pk'),
-    path('converter/<PosIntConv:pk>/', views.item_detail, name='converter_pk'),
-    re_path(r'^re/(?P<pk>[1-9]\d*)/$', views.item_detail, name='re_pk'),
+    path('', views.item_list, name='item_list'),
+    path('<int:pk>/', views.item_detail, name='item_detail'),
+    path('converter/<PosIntConv:pk>/', views.item_detail,
+         name='converter_item_detail'),
+    re_path(r'^re/(?P<pk>[1-9]\d*)/$', views.item_detail,
+            name='regex_item_detail'),
 ]
