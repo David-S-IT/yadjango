@@ -13,6 +13,7 @@ class StaticURLTests(TestCase):
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_coffee_endpoint(self):
+        cache.clear()
         url = '/coffee/'
         client = Client()
         response = client.get(url)
@@ -30,15 +31,10 @@ class MiddlewareReverseTextTests(TestCase):
         """
         url = '/coffee/'
         cache.clear()
-        for i in range(9):
-            key = 'count-requests'
-            data = cache.get(key)
-            if data is None:
-                data = {'count': 0}
-            data['count'] += 1
-            cache.set(key, data, timeout=None)
-            Client()
         client = Client()
+        for i in range(9):
+            client.get(url)
+
         response = client.get(url)
         body_content = response.content.decode('utf-8')
         self.assertEqual(body_content, 'кинйач Я')
