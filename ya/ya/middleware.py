@@ -19,8 +19,8 @@ class ReverseTextMiddleware:
             cache.set(key, data, timeout=None)
 
             if response.status_code in (200, 418) and data['count'] % 10 == 0:
-                html = response.content.decode('utf-8')
-                response.content = ''.join(reversed(html))
+                html = response.content.decode('utf-8').split()
+                response.content = ' '.join(reversed(html))
 
                 # soup = BeautifulSoup(html, 'html.parser')
                 # body_content = soup.find('body').get_text()

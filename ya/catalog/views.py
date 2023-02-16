@@ -2,8 +2,8 @@ from django.shortcuts import HttpResponse
 
 
 def item_list(request):
-    return HttpResponse('<body>Список элементов</body>')
+    return HttpResponse('Список элементов')
 
 
 def item_detail(request, pk):
-    return HttpResponse(f'<body>Подробно элемент: {pk}</body>')
+    return HttpResponse(f'Подробно элемент: {pk}')
