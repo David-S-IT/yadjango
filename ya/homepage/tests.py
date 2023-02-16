@@ -37,5 +37,7 @@ class MiddlewareReverseTextTests(TestCase):
 
         response = client.get(url)
         body_content = response.content.decode('utf-8')
-        self.assertEqual(body_content, 'Я кинйач')
-        self.assertEqual(response.status_code, 418)
+        self.assertEqual(body_content, 'Я кинйач',
+                         msg=f'Неверный текст: {body_content} != Я кинйач')
+        self.assertEqual(response.status_code, 418,
+                         msg=f'Статус код: {response.status_code} != 418')
