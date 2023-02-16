@@ -20,7 +20,7 @@ class ReverseTextMiddleware:
 
             if response.status_code in (200, 418) and data['count'] % 10 == 0:
                 html = response.content.decode('utf-8').split()
-                response.content = ' '.join(reversed(html))
+                response.content = ' '.join(word[::-1] for word in html)
 
                 # soup = BeautifulSoup(html, 'html.parser')
                 # body_content = soup.find('body').get_text()
