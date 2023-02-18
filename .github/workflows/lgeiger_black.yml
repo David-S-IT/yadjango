@@ -7,7 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint
     steps:
-      - name: Black Check
-        uses: jpetrucciani/black-check@master
-        with:
-          path: '.'
+      - name: Black Code Formatter
+        uses: lgeiger/black-action@v1.0.1
