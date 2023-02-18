@@ -1,21 +1,12 @@
-name: Format code
+name: black Lint
 
 on: [push, pull_request]
 
 jobs:
-  format:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Format code with black
-        run: |
-          pip install black
-          black .
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v4
+      - uses: psf/black@stable
         with:
-          author_name: ${{ github.actor }}
-          author_email: ${{ github.actor }}@users.noreply.github.com
-          message: "Format code with black"
-          add: "."
-          branch: ${{ github.ref }}
+          options: "--check --verbose"
