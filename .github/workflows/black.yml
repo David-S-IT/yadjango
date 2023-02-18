@@ -10,5 +10,5 @@ jobs:
       - name: Black Check
         uses: jpetrucciani/black-check@master
         with:
-          args: '--check'
-          path: 'github/ya'
+          args: "--check"
+          path: "/github/ya"
