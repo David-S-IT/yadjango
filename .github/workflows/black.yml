@@ -1,14 +1,23 @@
-name: black Lint
+name: Format code
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
-  black-lint:
+  format:
     runs-on: ubuntu-latest
-    name: Lint
     steps:
-      - name: Black Check
-        uses: jpetrucciani/black-check@master
+      - uses: actions/checkout@v2
+      - name: Format code with black
+        run: |
+          pip install black
+          black .
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
         with:
-          args: "--check"
-          path: "/github/ya"
+          author_name: ${{ github.actor }}
+          author_email: ${{ github.actor }}@users.noreply.github.com
+          message: "Format code with black"
+          add: "."
+          branch: ${{ github.ref }}
