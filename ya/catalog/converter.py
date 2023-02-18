@@ -1,10 +1,8 @@
 class PositiveIntegerConverter:
     regex = r'[1-9]\d*'
 
-    @staticmethod
-    def to_python(value):
-        return int(value)
+    def to_python(self, value):
+        return f'{value}'
 
-    @staticmethod
-    def to_url(value):
-        return '%d' % value
+    def to_url(self, value):
+        return f'{value}'
