@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'about.apps.AboutConfig',
     'catalog.apps.CatalogConfig',
+    'core.apps.CoreConfig',
     'homepage.apps.HomepageConfig',
 ]
 
