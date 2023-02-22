@@ -1,16 +1,15 @@
+import django.core.validators
 from core.models import CategoryBase
-from django.core.validators import (
-    MaxValueValidator,
-    MinValueValidator,
-    RegexValidator,
-)
 from django.db import models
 
 
 class Category(CategoryBase):
     weight = models.IntegerField(
         default=100,
-        validators=[MinValueValidator(0), MaxValueValidator(32767)],
+        validators=[
+            django.core.validators.MinValueValidator(0),
+            django.core.validators.MaxValueValidator(32767),
+        ],
     )
 
     class Meta:
@@ -29,7 +28,9 @@ class Tag(CategoryBase):
 class Item(CategoryBase):
     text = models.TextField(
         verbose_name='Описание товара',
-        validators=[RegexValidator(r'(роскошно|превосходно)')],
+        validators=[
+            django.core.validators.RegexValidator(r'(роскошно|превосходно)')
+        ],
     )
     category = models.ForeignKey(
         Category,
