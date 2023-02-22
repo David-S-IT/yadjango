@@ -1,22 +1,55 @@
-from django.core.validators import RegexValidator
+from core.models import CategoryBase
+from django.core.validators import (
+    MaxValueValidator,
+    MinValueValidator,
+    RegexValidator,
+)
 from django.db import models
 
 
-class CategoryBase(models.Model):
-    name = models.CharField('Название', max_length=150)
-    slug = models.SlugField(
-        verbose_name='Уникальный адрес',
-        unique=True,
-        max_length=200,
-        validators=[RegexValidator(r'^[\w-]+$')],
+class Category(CategoryBase):
+    weight = models.IntegerField(
+        default=100,
+        validators=[MinValueValidator(0), MaxValueValidator(32767)],
     )
-    is_published = models.BooleanField(
-        'Опубликовано',
-        default=True,
-    )
-
-    def __str__(self) -> str:
-        return self.name
 
     class Meta:
-        abstract = True
+        ordering = ['name']
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+
+class Tag(CategoryBase):
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+
+class Item(CategoryBase):
+    text = models.TextField(
+        verbose_name='Описание товара',
+        validators=[RegexValidator(r'(роскошно|превосходно)')],
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='category',
+        verbose_name='Категория',
+        help_text='Категория, к которой относится товар',
+    )
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name='tags',
+        verbose_name='Тег',
+        help_text='Тег для товара',
+    )
+    slug = None
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'

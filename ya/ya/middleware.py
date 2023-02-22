@@ -9,7 +9,7 @@ class ReverseTextMiddleware:
 
     def __call__(self, request):
         response = self.get_response(request)
-        if settings.MIDDLEWARE_REVERSE_TEXT:
+        if settings.MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT:
             # Increase the request count for this client
             key = 'count-requests'
             data = cache.get(key)
