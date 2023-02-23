@@ -4,19 +4,17 @@ from .models import Category, Item, Tag
 
 
 @admin.register(Item)
-class CatalogAdmin(admin.ModelAdmin):
+class ItemAdmin(admin.ModelAdmin):
     list_display = (
         # 'id',
-        'name',
-        'is_published',
+        Item.name.field.name,
+        Item.is_published.field.name,
     )
 
-    search_fields = ('name',)
-    list_filter = ('name',)
-    list_display_links = ('name',)
+    list_display_links = (Item.name.field.name,)
     empty_value_display = '-пусто-'
-    list_editable = ('is_published',)
-    filter_horizontal = ('tags',)
+    list_editable = (Item.is_published.field.name,)
+    filter_horizontal = (Item.tags.field.name,)
 
 
 admin.site.register(Tag)

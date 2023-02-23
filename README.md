@@ -31,14 +31,22 @@ cd yadjango
 - Windows:
 ```.\venv\Scripts\activate.bat```
 #### 5. Установить зависимости
-Обновить pip: ```venv/bin/python3.9 -m pip install --upgrade pip```  
+Обновить pip: ```venv/bin/python -m pip install --upgrade pip```  
 Перейти в папку requirements: ```cd requirements```
 - Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
 - Дополнительный - для тестов: ```pip install -r requirements_test.txt```
-- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```  
-
+- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```
 Выйти из папки requirements: ```cd ..```  
-#### 6. Для генерации SECRET_KEY:
+
+#### 6. Создать и применить миграции
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
+
+#### 7. Для генерации SECRET_KEY:
 Открыть Python:  
 - Linux: ```python3.9```
 - Windows: ```python```
@@ -50,8 +58,26 @@ print(get_random_secret_key())
 ```
 Вставить значение ключа в example.env SECRET_KEY="..."  
 Для закрытия Python выполнить: ```quit()```
-#### 7. Запуск сервера
+#### 8. Запуск сервера
 Перейти в папку ya с файлом manage.py: ```cd ya```
 - Linux: ```python3.9 manage.py runserver```
 - Windows: ```python manage.py runserver```
-#### 8. Сайт доступен по адресу: http://127.0.0.1:8000/
+#### 9. Сайт доступен по адресу: http://127.0.0.1:8000/
+
+## Фикстуры для наполнения базы
+Используйте фикстуры для тестов в папке ya, где manage.py
+Чтобы загрузить фикстуры выполнить:
+
+```
+python manage.py loaddata fixtures.json
+```
+Пользователь: admin  
+Пароль: adminadmin
+
+## Чтобы создать своего суперпользователя с правами админа
+Выполнить и исполнить предложенные инструкции в консоли
+```
+python manage.py createsuperuser
+```
+
+

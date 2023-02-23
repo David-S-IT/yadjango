@@ -1,22 +1,46 @@
-from django.core.validators import RegexValidator
+from django.core.validators import validate_slug
 from django.db import models
 
 
-class CategoryBase(models.Model):
-    name = models.CharField('Название', max_length=150)
-    slug = models.SlugField(
-        verbose_name='Уникальный адрес',
+class NameBaseModel(models.Model):
+    name = models.CharField(
+        'название',
         unique=True,
-        max_length=200,
-        validators=[RegexValidator(r'^[\w-]+$')],
+        max_length=150,
+        help_text='Максимальная длина 150 символов',
     )
-    is_published = models.BooleanField(
-        'Опубликовано',
-        default=True,
-    )
-
-    def __str__(self) -> str:
-        return self.name
 
     class Meta:
         abstract = True
+
+    def __str__(self) -> str:
+        return self.name[:15]
+
+
+class PublishedBaseModel(models.Model):
+    is_published = models.BooleanField(
+        'опубликовано',
+        default=True,
+    )
+
+    class Meta:
+        abstract = True
+
+    def __str__(self) -> str:
+        return self.name[:15]
+
+
+class SlugBaseModel(models.Model):
+    slug = models.SlugField(
+        verbose_name='уникальный адрес',
+        unique=True,
+        max_length=200,
+        validators=[validate_slug],
+        help_text='Максимальная длина 200 символов',
+    )
+
+    class Meta:
+        abstract = True
+
+    def __str__(self) -> str:
+        return self.name[:15]
