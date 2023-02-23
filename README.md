@@ -79,5 +79,7 @@ python manage.py loaddata fixtures.json
 ```
 python manage.py createsuperuser
 ```
+## ER диаграмма моделей в приложении Catalog
+https://app.quickdatabasediagrams.com/#/d/yPUaOE 
 
 
