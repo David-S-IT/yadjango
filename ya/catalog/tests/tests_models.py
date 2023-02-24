@@ -17,12 +17,14 @@ class CatalogModelsTests(TestCase):
             slug='tag-name-slug',
             is_published=True,
         )
+        super(CatalogModelsTests, self).setUp()
 
     def tearDown(self):
         Category.objects.all().delete()
         Tag.objects.all().delete()
+        super(CatalogModelsTests, self).tearDown()
 
-    def func_for_tests(
+    def func_for_tests_validate_fields(
         self, obj, model, item_count, bool_, val=None, slug=None
     ):
         if bool_:
@@ -36,7 +38,7 @@ class CatalogModelsTests(TestCase):
             self.assertNotEqual(model.objects.count(), item_count + 1)
             self.assertNotIn(self.obj, model.objects.all())
 
-    def func_for_test_item(self, text):
+    def func_for_test_model_item(self, text):
         self.item = Item(
             name=f'Item{text}',
             is_published=True,
@@ -51,11 +53,11 @@ class CatalogModelsTests(TestCase):
         """
         Тестируем поле text, корректно если содержит (роскошно|превосходно).
         """
-        words = ('роскошно', 'превосходно')
+        words = ('роскошно', 'превосходно', 'Роскошно', 'Превосходно')
         item_count = Item.objects.count()
         for text in words:
             with self.subTest(text=text):
-                self.func_for_test_item(text)
+                self.func_for_test_model_item(text)
                 self.assertEqual(Item.objects.count(), item_count + 1)
                 item_count += 1
                 self.assertEqual(Item.objects.get(text=text), self.item)
@@ -80,7 +82,7 @@ class CatalogModelsTests(TestCase):
         for text in texts:
             with self.assertRaises(exceptions.ValidationError):
                 text = text
-                self.func_for_test_item(text)
+                self.func_for_test_model_item(text)
         self.assertEqual(Item.objects.count(), item_count)
 
     def test_validation_slug_is_correct(self):
@@ -102,7 +104,7 @@ class CatalogModelsTests(TestCase):
                     is_published=True,
                     slug=slug,
                 )
-                self.func_for_tests(
+                self.func_for_tests_validate_fields(
                     self.obj, model, item_count, bool_, slug=slug
                 )
 
@@ -121,6 +123,6 @@ class CatalogModelsTests(TestCase):
                     slug=slug,
                     weight=val,
                 )
-                self.func_for_tests(
+                self.func_for_tests_validate_fields(
                     self.obj, Category, item_count, bool_, val, slug
                 )

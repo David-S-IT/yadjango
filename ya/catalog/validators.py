@@ -10,6 +10,7 @@ class ValidateMustContain:
         self.args = args
 
     def __call__(self, value):
+        value = value.lower()
         for arg in self.args:
             if re.search(rf'\b{arg}\b', value):
                 return value

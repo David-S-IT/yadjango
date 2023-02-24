@@ -14,15 +14,16 @@ class Category(NameBaseModel, PublishedBaseModel, SlugBaseModel):
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
 
 
 class Tag(NameBaseModel, PublishedBaseModel, SlugBaseModel):
     class Meta:
+        default_related_name = 'tags'
         ordering = ['name']
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        verbose_name = 'тег'
+        verbose_name_plural = 'теги'
 
 
 class Item(NameBaseModel, PublishedBaseModel):
@@ -52,5 +53,5 @@ class Item(NameBaseModel, PublishedBaseModel):
     class Meta:
         ordering = ['name']
         default_related_name = 'items'
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
+        verbose_name = 'товар'
+        verbose_name_plural = 'товары'

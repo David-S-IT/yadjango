@@ -1,4 +1,3 @@
-from django.core.validators import validate_slug
 from django.db import models
 
 
@@ -21,6 +20,7 @@ class PublishedBaseModel(models.Model):
     is_published = models.BooleanField(
         'опубликовано',
         default=True,
+        help_text='Статус публикации',
     )
 
     class Meta:
@@ -35,7 +35,6 @@ class SlugBaseModel(models.Model):
         verbose_name='уникальный адрес',
         unique=True,
         max_length=200,
-        validators=[validate_slug],
         help_text='Максимальная длина 200 символов',
     )
 

@@ -67,7 +67,6 @@ print(get_random_secret_key())
 ## Фикстуры для наполнения базы
 Используйте фикстуры для тестов в папке ya, где manage.py
 Чтобы загрузить фикстуры выполнить:
-
 ```
 python manage.py loaddata fixtures.json
 ```
@@ -79,6 +78,7 @@ python manage.py loaddata fixtures.json
 ```
 python manage.py createsuperuser
 ```
+
 ## ER диаграмма моделей в приложении Catalog
 https://app.quickdatabasediagrams.com/#/d/yPUaOE 
 

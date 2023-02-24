@@ -2,5 +2,8 @@
 ignore = W503, E203
 per-file-ignores = manage.py:Q000
 exclude = .git,.github,__pycache__,*/migrations/,venv/,ya/manage.py
-style = PEP8
 max-line-length = 79
+style = PEP8
+profile = google
+import-order-style = google
+application-import-names = core
