@@ -12,4 +12,3 @@ exclude = '''
   | \.github
 )/
 '''
-import-order-style = 'google'

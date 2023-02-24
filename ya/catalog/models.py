@@ -1,7 +1,8 @@
-from catalog.validators import ValidateMustContain
-from core.models import NameBaseModel, PublishedBaseModel, SlugBaseModel
 from django.core.validators import MaxValueValidator
 from django.db import models
+
+from catalog.validators import ValidateMustContain
+from core.models import NameBaseModel, PublishedBaseModel, SlugBaseModel
 
 
 class Category(NameBaseModel, PublishedBaseModel, SlugBaseModel):
