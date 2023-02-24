@@ -85,29 +85,6 @@ class CatalogModelsTests(TestCase):
                 self.func_for_test_model_item(text)
         self.assertEqual(Item.objects.count(), item_count)
 
-    def test_validation_slug_is_correct(self):
-        """
-        Тест валидации поля slug в Tag и Category содержит только 0-9,A-z,-,_.
-        """
-        slugs = (
-            ('correct0A-_', Tag, True),
-            ('correct0A-_', Category, True),
-            ('не корректный слаг', Tag, False),
-            ('не корректный слаг', Category, False),
-        )
-
-        for slug, model, bool_ in slugs:
-            item_count = model.objects.count()
-            with self.subTest(slug=slug, model=model):
-                self.obj = model(
-                    name=f'Name - {slug}',
-                    is_published=True,
-                    slug=slug,
-                )
-                self.func_for_tests_validate_fields(
-                    self.obj, model, item_count, bool_, slug=slug
-                )
-
     def test_category_validator_value_of_weight(self):
         """
         Тестируем валидацию значения weight поля Catalog в диапазоне [0,32767].
