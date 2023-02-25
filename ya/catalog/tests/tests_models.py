@@ -23,9 +23,10 @@ class CatalogModelsTests(TestCase):
         Item.objects.all().delete()
         Tag.objects.all().delete()
         Category.objects.all().delete()
+
         super(CatalogModelsTests, self).tearDown()
 
-    def func_for_tests_validate_fields(
+    def func_for_tests_field_validate(
         self, obj, model, item_count, bool_, val=None, slug=None
     ):
         if bool_:
@@ -50,7 +51,7 @@ class CatalogModelsTests(TestCase):
         self.item.save()
         self.item.tags.add(self.tag)
 
-    def test_validation_is_correct_model_item_field_text_created(self):
+    def test_item_text_validator(self):
         """
         Тестируем поле text, корректно если содержит (роскошно|превосходно).
         """
@@ -63,7 +64,7 @@ class CatalogModelsTests(TestCase):
                 item_count += 1
                 self.assertEqual(Item.objects.get(text=text), self.item)
 
-    def test_validation_is_none_correct_model_item_field_text(self):
+    def test_item_text_negative_validator(self):
         """
         Тестируем поле text, ошибка если не содержит (роскошно|превосходно).
         """
@@ -86,7 +87,7 @@ class CatalogModelsTests(TestCase):
                 self.func_for_test_model_item(text)
         self.assertEqual(Item.objects.count(), item_count)
 
-    def test_category_validator_value_of_weight(self):
+    def test_category_weight_validator(self):
         """
         Тестируем валидацию значения weight поля Catalog в диапазоне [1,32766].
         """
@@ -108,6 +109,6 @@ class CatalogModelsTests(TestCase):
                     slug=slug,
                     weight=val,
                 )
-                self.func_for_tests_validate_fields(
+                self.func_for_tests_field_validate(
                     self.obj, Category, item_count, bool_, val, slug
                 )

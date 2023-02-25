@@ -13,7 +13,7 @@ class NameBaseModel(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return self.name[:15]
+        return self.name.name[:15]
 
 
 class PublishedBaseModel(models.Model):
@@ -26,9 +26,6 @@ class PublishedBaseModel(models.Model):
     class Meta:
         abstract = True
 
-    def __str__(self) -> str:
-        return self.is_published[:15]
-
 
 class SlugBaseModel(models.Model):
     slug = models.SlugField(
@@ -40,6 +37,3 @@ class SlugBaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-    def __str__(self) -> str:
-        return self.slug[:15]
