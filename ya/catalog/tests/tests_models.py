@@ -88,9 +88,16 @@ class CatalogModelsTests(TestCase):
 
     def test_category_validator_value_of_weight(self):
         """
-        Тестируем валидацию значения weight поля Catalog в диапазоне [0,32767].
+        Тестируем валидацию значения weight поля Catalog в диапазоне [1,32766].
         """
-        values = ((0, True), (300, True), (40000, False), (-1, False))
+        values = (
+            (1, True),
+            (0, False),
+            (300, True),
+            (40000, False),
+            (32767, False),
+            (-1, False),
+        )
         for val, bool_ in values:
             item_count = Category.objects.count()
             with self.subTest(value=val):
