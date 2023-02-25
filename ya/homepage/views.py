@@ -2,7 +2,7 @@ from django.shortcuts import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Главная')
+    return HttpResponse('?12Список.элементов раз,два:три!(четыре)')
 
 
 def coffee(request):

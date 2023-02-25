@@ -5,11 +5,8 @@ from django.core.cache import cache
 
 
 class ReverseTextMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
-
-    def __call__(self, request):
-        response = self.get_response(request)
+    @classmethod
+    def is_need_to_do_something(cls, response):
         if settings.MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT:
             # Increase the request count for this client
             key = 'count-requests'
@@ -20,9 +17,18 @@ class ReverseTextMiddleware:
             cache.set(key, data, timeout=None)
 
             if response.status_code in (200, 418) and data['count'] % 10 == 0:
-                html = response.content.decode('utf-8').split()
-                response.content = ' '.join(
-                    word[::-1] if re.match(r'[А-я]', word) else word
-                    for word in html
-                )
+                return True
+
+        return False
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        if ReverseTextMiddleware.is_need_to_do_something(response):
+            html = response.content.decode('utf-8')
+            response.content = re.sub(
+                r'[А-я]+', lambda x: x.group(0)[::-1], html
+            )
         return response
