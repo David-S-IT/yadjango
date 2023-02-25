@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'ya.middleware.ReverseTextMiddleware',
+    'ya.middlewares.middleware.ReverseTextMiddleware',
 ]
 
 MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT_ENV = os.getenv(
