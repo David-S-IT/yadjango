@@ -1,4 +1,5 @@
-# from bs4 import BeautifulSoup
+import re
+
 from django.conf import settings
 from django.core.cache import cache
 
@@ -20,9 +21,8 @@ class ReverseTextMiddleware:
 
             if response.status_code in (200, 418) and data['count'] % 10 == 0:
                 html = response.content.decode('utf-8').split()
-                response.content = ' '.join(word[::-1] for word in html)
-
-                # soup = BeautifulSoup(html, 'html.parser')
-                # body_content = soup.find('body').get_text()
-                # response.content = ''.join(reversed(body_content))
+                response.content = ' '.join(
+                    word[::-1] if re.match(r'[А-я]', word) else word
+                    for word in html
+                )
         return response

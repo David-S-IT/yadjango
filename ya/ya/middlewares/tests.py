@@ -1,10 +1,8 @@
-from django.core.cache import cache
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 
 
 class StaticURLTests(TestCase):
     def test_coffee_endpoint_status(self):
-        cache.clear()
         response = Client().get('/coffee/')
         self.assertEqual(
             response.status_code,
@@ -12,15 +10,32 @@ class StaticURLTests(TestCase):
             msg=f'Статус код: {response.status_code} != 418',
         )
 
-    def test_coffee_endpoint_text(self):
-        cache.clear()
+    @override_settings(MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT=True)
+    def test_coffee_on_endpoint_text(self):
         url = '/coffee/'
-        response = Client().get(url)
-        for i in range(9):
-            Client().get(url)
-        response_text = response.content.decode('utf-8')
-        self.assertEqual(
-            response_text,
-            'Я чайник',
-            msg=f'Неверный текст: {response_text} != Я кинйач',
-        )
+        for i in range(10):
+            response = Client().get(url)
+            response_text = response.content.decode('utf-8')
+            if response_text == 'Я кинйач':
+                break
+        else:
+            self.assertEqual(
+                response_text,
+                'Я кинйач',
+                msg=f'Неверный текст: {response_text} != Я кинйач',
+            )
+
+    @override_settings(MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT=False)
+    def test_coffee_off_endpoint_text(self):
+        url = '/coffee/'
+        for i in range(10):
+            response = Client().get(url)
+            response_text = response.content.decode('utf-8')
+            if response_text == 'Я чайник':
+                break
+        else:
+            self.assertEqual(
+                response_text,
+                'Я чайник',
+                msg=f'Неверный текст: {response_text} != Я чайник',
+            )
