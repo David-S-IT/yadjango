@@ -20,8 +20,9 @@ class CatalogModelsTests(TestCase):
         super(CatalogModelsTests, self).setUp()
 
     def tearDown(self):
-        Category.objects.all().delete()
+        Item.objects.all().delete()
         Tag.objects.all().delete()
+        Category.objects.all().delete()
         super(CatalogModelsTests, self).tearDown()
 
     def func_for_tests_validate_fields(

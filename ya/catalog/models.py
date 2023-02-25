@@ -1,4 +1,4 @@
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from catalog.validators import ValidateMustContain
@@ -9,7 +9,7 @@ class Category(NameBaseModel, PublishedBaseModel, SlugBaseModel):
     weight = models.PositiveSmallIntegerField(
         'вес',
         default=100,
-        validators=[MaxValueValidator(32767)],
+        validators=[MinValueValidator(1), MaxValueValidator(32767)],
         help_text='Максимальная длина 100 символов',
     )
 
