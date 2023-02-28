@@ -1,4 +1,6 @@
 from django.db import models
+from django_cleanup.signals import cleanup_pre_delete
+from sorl.thumbnail import delete, get_thumbnail
 
 
 class NameBaseModel(models.Model):
@@ -13,7 +15,7 @@ class NameBaseModel(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return self.name.name[:15]
+        return self.name[:15]
 
 
 class PublishedBaseModel(models.Model):
@@ -37,3 +39,20 @@ class SlugBaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class ImageBaseModel(models.Model):
+    image = models.ImageField(
+        'Будет приведено к ширине 300px', upload_to='media/%Y/%m', default=''
+    )
+
+    def get_image_300x300(self):
+        return get_thumbnail(self.image, '300x300', crop='center', quality=51)
+
+    class Meta:
+        abstract = True
+
+    def sorl_delete(**kwargs):
+        delete(kwargs['file'])
+
+    cleanup_pre_delete.connect(sorl_delete)

@@ -1,5 +1,5 @@
 [flake8]
-ignore = W503, E203
+ignore = W503, E203, I001, I005
 per-file-ignores = manage.py:Q000
 exclude = .git,.github,__pycache__,*/migrations/,venv/,ya/manage.py
 max-line-length = 79

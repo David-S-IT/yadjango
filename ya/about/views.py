@@ -1,5 +1,5 @@
-from django.shortcuts import HttpResponse
+from django.views.generic.base import TemplateView
 
 
-def description(request):
-    return HttpResponse('О проекте')
+class AboutView(TemplateView):
+    template_name = 'about/about.html'

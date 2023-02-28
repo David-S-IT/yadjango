@@ -1,8 +1,9 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 
 
 def home(request):
-    return HttpResponse('Главная')
+    template = 'homepage/index.html'
+    return render(request, template)
 
 
 def coffee(request):
