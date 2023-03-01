@@ -2,6 +2,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from ckeditor.fields import RichTextField
 from sorl.thumbnail import get_thumbnail
 
 from catalog.validators import ValidateMustContain
@@ -50,7 +51,7 @@ class Item(NameBaseModel, PublishedBaseModel):
         verbose_name='тег',
         help_text='Тег для товара',
     )
-    text = models.TextField(
+    text = RichTextField(
         verbose_name='описание товара',
         validators=[ValidateMustContain('роскошно', 'превосходно')],
         help_text=(

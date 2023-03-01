@@ -8,6 +8,7 @@ urlpatterns = [
     path('about/', include('about.urls', namespace='about')),
     path('catalog/', include('catalog.urls', namespace='catalog')),
     path('admin/', admin.site.urls, name='django_admin'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

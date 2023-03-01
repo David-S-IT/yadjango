@@ -3,6 +3,6 @@
 {% block content %}
   <div class="container">
     <h2> Описание товара - {{ item.name }} </h2>
-    {{ item.text }}
+    {{ item.text | safe | linebreaks }}
   </div>
 {% endblock %}
