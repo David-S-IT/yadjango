@@ -86,7 +86,7 @@ class GalleryImage(ImageBaseModel):
 
     def image_tmb(self):
         if self.image:
-            return mark_safe(f'<img src="{self.get_img.url}">')
+            return mark_safe(f'<img src="{self.get_image_300x300.url}">')
         return 'Нет изображения'
 
     image_tmb.short_description = 'изображение для галереи'
@@ -115,20 +115,12 @@ class MainImage(ImageBaseModel):
     def get_small_img(self):
         return get_thumbnail(self.image, '50x50', crop='center', quality=51)
 
-    def image_tmb_small(self):
-        if self.image:
-            return mark_safe(f'<img src="{self.get_small_img.url}">')
-        return 'Нет изображения'
-
-    image_tmb_small.short_description = 'превью'
-    image_tmb_small.allow_tags = True
-
     def image_tmb(self):
         if self.image:
-            return mark_safe(f'<img src="{self.get_img.url}">')
+            return mark_safe(f'<img src="{self.get_image_300x300.url}">')
         return 'Нет изображения'
 
-    image_tmb.short_description = 'главное фото'
+    image_tmb.short_description = 'основное фото товара'
     image_tmb.allow_tags = True
 
     def str(self):

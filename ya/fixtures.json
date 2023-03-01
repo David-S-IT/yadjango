@@ -20,6 +20,16 @@
   }
 },
 {
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "name": "овощи",
+    "is_published": true,
+    "slug": "vegitables",
+    "weight": 100
+  }
+},
+{
   "model": "catalog.tag",
   "pk": 1,
   "fields": {
@@ -70,7 +80,7 @@
   "fields": {
     "name": "item1",
     "is_published": true,
-    "category": null,
+    "category": 1,
     "text": "item роскошно",
     "tags": [
       1
@@ -83,7 +93,7 @@
   "fields": {
     "name": "item2",
     "is_published": true,
-    "category": 1,
+    "category": 2,
     "text": "item превосходно",
     "tags": [
       1
@@ -123,11 +133,56 @@
   "fields": {
     "name": "item5",
     "is_published": true,
-    "category": null,
-    "text": "Роскошно❤️",
+    "category": 3,
+    "text": "Роскошные овощи❤️  Превосходно едятся.",
     "tags": [
       5
     ]
+  }
+},
+{
+  "model": "catalog.item",
+  "pk": 6,
+  "fields": {
+    "name": "Помидоры",
+    "is_published": true,
+    "category": 3,
+    "text": "роскошно помидоры",
+    "tags": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 1,
+  "fields": {
+    "image": "media/2023/02/d80c8f436673eaf69a945d2955c44b38.jpg",
+    "item": 6
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 2,
+  "fields": {
+    "image": "media/2023/02/pochemu-nelzya-est-pomidory-kazhdyj-den_16328605681394635403.jpg",
+    "item": 6
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 5,
+  "fields": {
+    "image": "media/2023/03/volga.jpg",
+    "item": 6
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 1,
+  "fields": {
+    "image": "media/2023/02/aa9e87751b793bbe1072b0176e496a8b.jpg",
+    "item": 6
   }
 }
 ]

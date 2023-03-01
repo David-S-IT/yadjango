@@ -1,3 +1,9 @@
 <footer class="border-top text-center py-3">
-<a href="{% url 'homepage:index'%}"><p>© {{ year }} Copyright </p> </a>
+  {% with request.resolver_match.view_name as view_name %}
+
+    <a class="nav-link {% if view_name  == 'homepage:index' %}disabled{% endif %}"
+       href="{% url 'homepage:index' %}">
+      © {{ year }} Copyright
+    </a>
+  {% endwith %}
 </footer>

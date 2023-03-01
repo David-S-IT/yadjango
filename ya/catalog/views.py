@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import render
 
 from catalog.models import Item
 
@@ -15,7 +15,3 @@ def item_detail(request, pk):
     context = {'item': item}
     template = 'catalog/item_detail.html'
     return render(request, template, context)
-
-
-def item_correct_url(request, pk):
-    return HttpResponse(f'элемент {pk}')

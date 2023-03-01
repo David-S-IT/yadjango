@@ -46,11 +46,12 @@ class ImageBaseModel(models.Model):
         'Будет приведено к ширине 300px', upload_to='media/%Y/%m', default=''
     )
 
-    def get_image_300x300(self):
-        return get_thumbnail(self.image, '300x300', crop='center', quality=51)
-
     class Meta:
         abstract = True
+
+    @property
+    def get_image_300x300(self):
+        return get_thumbnail(self.image, '300x300', crop='center', quality=51)
 
     def sorl_delete(**kwargs):
         delete(kwargs['file'])

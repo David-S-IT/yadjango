@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
-{% block title %} Последние обновления на сайте {% endblock %}
 {% load static %}
+{% block title %} Последние обновления на сайте {% endblock %}
 {% block content %}
-<section class="container">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-6 col-sm-12 d-flex justify-content-center mt-4 mb-4">
-              <img class="img-fluid" src="{% static '/img/welcome.png' %}" width="500" height="300" alt="Store">
-            </div>
-          </div>
+  <section class="container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-sm-12 d-flex justify-content-center mt-4 mb-4">
+          <img class="img-fluid" src="{% static '/img/welcome.png' %}"
+               width="500" height="300" alt="Store">
         </div>
-</section>
+      </div>
+    </div>
+  </section>
 
-<div class="container">
-      <h1>Мы рады вас видеть! Добро пожаловать в наш магазин!</h1>
-      <hr>
+  <div class="container">
+    <h1>Мы рады вас видеть! Добро пожаловать в наш магазин!</h1>
+    <hr>
 
-        <h2><a class="btn btn-primary" href="{% url 'catalog:items_list' %}"> Ассортимент товаров </a></h2>
-</div>
+    <h2><a class="btn btn-primary" href="{% url 'catalog:items_list' %}">
+      Ассортимент товаров </a></h2>
+  </div>
 {% endblock %}
