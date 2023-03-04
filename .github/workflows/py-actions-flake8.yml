@@ -1,6 +1,6 @@
 name: flake8 Lint
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   flake8-lint:
@@ -16,4 +16,4 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          plugins: "pep8-naming flake8-isort flake8-quotes flake8-broken-line"
+          plugins: "pep8-naming flake8-import-order flake8-quotes flake8-broken-line"
