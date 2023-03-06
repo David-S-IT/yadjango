@@ -17,7 +17,11 @@
     <h1>Мы рады вас видеть! Добро пожаловать в наш магазин!</h1>
     <hr>
 
-    <h2><a class="btn btn-primary" href="{% url 'catalog:items_list' %}">
-      Ассортимент товаров </a></h2>
+  </div>
+
+  <div class="container">
+    <div class="row mb-2">
+      {% include 'catalog/includes/item_card.html' %}
+    </div>
   </div>
 {% endblock %}

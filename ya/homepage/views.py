@@ -1,9 +1,17 @@
 from django.shortcuts import HttpResponse, render
 
+from catalog.models import Item
+
 
 def home(request):
+    items = (
+        Item.objects.select_related('category')
+        .filter(is_on_main=True)
+        .order_by('name')
+    )
+    context = {'items': items}
     template = 'homepage/index.html'
-    return render(request, template)
+    return render(request, template, context)
 
 
 def coffee(request):

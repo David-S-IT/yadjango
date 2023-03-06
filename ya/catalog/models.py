@@ -59,6 +59,7 @@ class Item(NameBaseModel, PublishedBaseModel):
             ' слова: роскошно или превосходно'
         ),
     )
+    is_on_main = models.BooleanField('опубликовано на главной', default=False)
 
     class Meta:
         ordering = ['name']

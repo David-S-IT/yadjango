@@ -1,0 +1,47 @@
+{% for item in items %}
+        {% if item.is_published %}
+
+          <div class="col-md-3 ">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column justify-content-center align-items-center position-static">
+
+                <h2>{{ item.name }} </h2>
+
+                <ul>
+                  <li>
+                    Категория: {{ item.category.name }}
+                  </li>
+                  <li>
+                    Теги:
+                    {% for tag in item.tags.all %}
+                      {{ tag.name }}
+                      {% if not forloop.last %}
+                        ,
+                      {% endif %}
+                    {% empty %}
+                      <p>тегов нет</p>
+                    {% endfor %}
+                  </li>
+                </ul>
+
+                <div class="card-body">
+                  <p>{{ item.text |safe|truncatechars_html:50 }}</p>
+                </div>
+                <a class="btn btn-primary"
+                   href="{% url 'catalog:item_detail' item.id %}"> подробная
+                  информация </a>
+
+              </div>
+            </div>
+          </div>
+
+        {% else %}
+          <article>
+            <div class="list-group">
+
+              <h3> Товар № {{ item.pk }} Ожидает одобрения администрацией.</h3>
+
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}

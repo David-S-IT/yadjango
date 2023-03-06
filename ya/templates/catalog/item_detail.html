@@ -1,8 +1,47 @@
 {% extends 'base.html' %}
 {% block title %} Товар {{ item.name }} {% endblock %}
 {% block content %}
+
   <div class="container">
-    <h2> Описание товара - {{ item.name }} </h2>
+    <h2> {{ item.name }} </h2>
+    {% load thumbnail %}
+    {% thumbnail item.main_image.image "800" upscale=True crop="center" as im %}
+      <img class="card-img my-2"
+           src="{{ im.url }}"
+           width="{{ im.width }}"
+           height="{{ im.height }}"
+           class="rounded float-end"
+           alt="Картинка товара">
+    {% endthumbnail %}
+    <ul>
+      <li>
+        Категория: {{ item.category.name }}
+      </li>
+      <li>
+        Теги:
+        {% for tag in item.tags.all %}
+          {{ tag.name }}
+          {% if not forloop.last %}
+            ,
+          {% endif %}
+        {% empty %}
+          <p>тегов нет</p>
+        {% endfor %}
+      </li>
+    </ul>
+    <hr>
     {{ item.text | safe | linebreaks }}
+    <hr>
+    <h2> Галерея товара </h2>
+    <br>
+    {% for image in item.gallery.all %}
+      {{ image.image_tmb }}
+      {% if not forloop.last %}
+
+      {% endif %}
+    {% empty %}
+      <p>картинок нет</p>
+    {% endfor %}
   </div>
 {% endblock %}
+</div>
