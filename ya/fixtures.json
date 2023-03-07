@@ -3,7 +3,7 @@
   "model": "catalog.category",
   "pk": 1,
   "fields": {
-    "name": "Book",
+    "name": "Книга",
     "is_published": true,
     "slug": "book",
     "weight": 100
@@ -13,9 +13,9 @@
   "model": "catalog.category",
   "pk": 2,
   "fields": {
-    "name": "Notebook",
+    "name": "Фрукты",
     "is_published": true,
-    "slug": "notebook",
+    "slug": "fruit_s",
     "weight": 100
   }
 },
@@ -23,7 +23,7 @@
   "model": "catalog.category",
   "pk": 3,
   "fields": {
-    "name": "овощи",
+    "name": "Овощи",
     "is_published": true,
     "slug": "vegitables",
     "weight": 100
@@ -75,15 +75,25 @@
   }
 },
 {
+  "model": "catalog.tag",
+  "pk": 6,
+  "fields": {
+    "name": "Fruits",
+    "is_published": true,
+    "slug": "fruits"
+  }
+},
+{
   "model": "catalog.item",
   "pk": 1,
   "fields": {
-    "name": "item1",
+    "name": "Гранат",
     "is_published": true,
-    "category": 1,
-    "text": "item роскошно",
+    "category": 2,
+    "text": "<p><strong>Грана́т, роскошно</strong></p>\r\n\r\n<p><em>Грана́т</em>, Грана́тник, или Грана́товое де́рево (лат. Punica) &mdash; род кустарников и небольших деревьев семейства Дербенниковые (Lythraceae), прежде считался&nbsp;...</p>",
+    "is_on_main": true,
     "tags": [
-      1
+      6
     ]
   }
 },
@@ -91,12 +101,13 @@
   "model": "catalog.item",
   "pk": 2,
   "fields": {
-    "name": "item2",
-    "is_published": true,
-    "category": 2,
-    "text": "item превосходно",
+    "name": "Огурцы",
+    "is_published": false,
+    "category": 3,
+    "text": "<p>Огуре́ц роскошно</p>\r\n\r\n<p>Огуре́ц обыкнове́нный, или&nbsp;<em>Огурец</em>&nbsp;посевно́й (лат. Cucumis sativus), &mdash; однолетнее травянистое растение, вид рода&nbsp;<em>Огурец</em>&nbsp;(Cucumis) семейства Тыквенные&nbsp;...</p>",
+    "is_on_main": true,
     "tags": [
-      1
+      5
     ]
   }
 },
@@ -104,13 +115,13 @@
   "model": "catalog.item",
   "pk": 3,
   "fields": {
-    "name": "item3",
+    "name": "Виноград",
     "is_published": true,
-    "category": 2,
-    "text": "asDasdasd роскошно",
+    "category": 3,
+    "text": "<p><strong>Виногра́д &mdash; роскошно</strong></p>\r\n\r\n<p><em>Виногра́д</em>&nbsp;&mdash; плоды&nbsp;<em>винограда</em>&nbsp;культурного и некоторых других растений рода&nbsp;<em>Виноград</em>, в зрелом виде представляющие собой сладкие ягоды.</p>",
+    "is_on_main": true,
     "tags": [
-      3,
-      1
+      6
     ]
   }
 },
@@ -118,12 +129,14 @@
   "model": "catalog.item",
   "pk": 4,
   "fields": {
-    "name": "item4",
+    "name": "Яблоки",
     "is_published": true,
     "category": 2,
-    "text": "asddaf fd превосходно вфа",
+    "text": "<p><strong>Я́блоко &mdash;&nbsp; роскошно&nbsp;</strong></p>\r\n\r\n<p>Я́блоко &mdash; сочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.</p>\r\n\r\n<p>&nbsp;</p>",
+    "is_on_main": true,
     "tags": [
-      4
+      4,
+      5
     ]
   }
 },
@@ -131,10 +144,11 @@
   "model": "catalog.item",
   "pk": 5,
   "fields": {
-    "name": "item5",
+    "name": "Морковь",
     "is_published": true,
     "category": 3,
-    "text": "Роскошные овощи❤️  Превосходно едятся.",
+    "text": "<p><strong>роскошно морковь</strong></p>\r\n\r\n<p><em>Морковь</em>&nbsp;посевная (лат. Daucus carota subsp. sativus) &mdash; двулетнее растение, овощная культура, подвид вида&nbsp;<em>морковь</em>&nbsp;дикая. Обычно в быту под словом &laquo;<em>морковь</em>&raquo;&nbsp;...</p>",
+    "is_on_main": true,
     "tags": [
       5
     ]
@@ -147,9 +161,25 @@
     "name": "Помидоры",
     "is_published": true,
     "category": 3,
-    "text": "роскошно помидоры",
+    "text": "<p><strong>роскошно томат</strong></p>\r\n\r\n<p>Тома́т или помидо́р (лат. Sol&aacute;num lycop&eacute;rsicum) &mdash; однолетнее или многолетнее травянистое ... ярко-красные&nbsp;<em>помидоры</em>&nbsp;в Европе, видимо, из-за их расцветки</p>",
+    "is_on_main": false,
     "tags": [
       5
+    ]
+  }
+},
+{
+  "model": "catalog.item",
+  "pk": 7,
+  "fields": {
+    "name": "Властелин",
+    "is_published": true,
+    "category": 1,
+    "text": "<p>&laquo;<em>Властелин колец</em>&raquo; &mdash; одна из самых известных и популярных&nbsp;<em>книг</em>&nbsp;XX века.&nbsp;<em>Книга</em>&nbsp;переведена по меньшей мере на 38 языков. Она оказала огромное влияние на литературу&nbsp;...</p>\r\n\r\n<p>Автор: Дж.Р.Толкиен</p>\r\n\r\n<p>Роскошно книга Властелин Колец.&nbsp;</p>",
+    "is_on_main": true,
+    "tags": [
+      1,
+      2
     ]
   }
 },
@@ -178,11 +208,163 @@
   }
 },
 {
+  "model": "catalog.galleryimage",
+  "pk": 6,
+  "fields": {
+    "image": "media/2023/03/carrot2.jpg",
+    "item": 5
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 7,
+  "fields": {
+    "image": "media/2023/03/carrot3.jpeg",
+    "item": 5
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 8,
+  "fields": {
+    "image": "media/2023/03/apple2.jpg",
+    "item": 4
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 9,
+  "fields": {
+    "image": "media/2023/03/apple3.jpeg",
+    "item": 4
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 10,
+  "fields": {
+    "image": "media/2023/03/grapes2.jpg",
+    "item": 3
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 11,
+  "fields": {
+    "image": "media/2023/03/grapes3.jpg",
+    "item": 3
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 12,
+  "fields": {
+    "image": "media/2023/03/cucumber2.jpg",
+    "item": 2
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 13,
+  "fields": {
+    "image": "media/2023/03/cucumber3.jpg",
+    "item": 2
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 14,
+  "fields": {
+    "image": "media/2023/03/garnet2.jpeg",
+    "item": 1
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 15,
+  "fields": {
+    "image": "media/2023/03/garnet3.jpg",
+    "item": 1
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 16,
+  "fields": {
+    "image": "media/2023/03/властелин_колец.webp",
+    "item": 7
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 17,
+  "fields": {
+    "image": "media/2023/03/властелин_колец2.jpg",
+    "item": 7
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 18,
+  "fields": {
+    "image": "media/2023/03/vlastelin_kolets_tolkin_dzhon_ronald_ruel__301246_2_KiIuWWH.jpg",
+    "item": 7
+  }
+},
+{
   "model": "catalog.mainimage",
   "pk": 1,
   "fields": {
     "image": "media/2023/02/aa9e87751b793bbe1072b0176e496a8b.jpg",
     "item": 6
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 2,
+  "fields": {
+    "image": "media/2023/03/carrot1.jpg",
+    "item": 5
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 3,
+  "fields": {
+    "image": "media/2023/03/apple1.jpeg",
+    "item": 4
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 4,
+  "fields": {
+    "image": "media/2023/03/grapes1.jpg",
+    "item": 3
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 5,
+  "fields": {
+    "image": "media/2023/03/cucumber1.jpg",
+    "item": 2
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 6,
+  "fields": {
+    "image": "media/2023/03/garnet1.jpeg",
+    "item": 1
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 8,
+  "fields": {
+    "image": "media/2023/03/властелин_колец2_RDxyrMl.jpg",
+    "item": 7
   }
 }
 ]

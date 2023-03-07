@@ -1,7 +1,6 @@
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.urls import reverse
 from django.utils.safestring import mark_safe
 from sorl.thumbnail import get_thumbnail
 
@@ -23,6 +22,7 @@ class Category(NameBaseModel, PublishedBaseModel, SlugBaseModel):
     )
 
     class Meta:
+        default_related_name = 'categories'
         ordering = ['name']
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
@@ -59,7 +59,11 @@ class Item(NameBaseModel, PublishedBaseModel):
             ' слова: роскошно или превосходно'
         ),
     )
-    is_on_main = models.BooleanField('опубликовано на главной', default=False)
+    is_on_main = models.BooleanField(
+        'опубликовано на главной',
+        default=False,
+        help_text='Включить публикацию на главной',
+    )
 
     class Meta:
         ordering = ['name']
@@ -77,13 +81,14 @@ class Item(NameBaseModel, PublishedBaseModel):
     main_image_tmb.short_description = 'превью'
     main_image_tmb.allow_tags = True
 
-    def get_absolute_url(self):
-        return reverse('catalog:detail', kwargs={'pk': self.pk})
-
 
 class GalleryImage(ImageBaseModel):
     item = models.ForeignKey(
-        Item, on_delete=models.CASCADE, verbose_name='товар', null=True
+        Item,
+        on_delete=models.CASCADE,
+        verbose_name='товар',
+        null=True,
+        help_text='Наименование товара',
     )
 
     def image_tmb(self):
@@ -105,7 +110,11 @@ class GalleryImage(ImageBaseModel):
 
 class MainImage(ImageBaseModel):
     item = models.OneToOneField(
-        Item, on_delete=models.CASCADE, verbose_name='товар', null=True
+        Item,
+        on_delete=models.CASCADE,
+        verbose_name='товар',
+        null=True,
+        help_text=('Наименование товара'),
     )
 
     class Meta:
@@ -115,7 +124,7 @@ class MainImage(ImageBaseModel):
 
     @property
     def get_small_img(self):
-        return get_thumbnail(self.image, '50x50', crop='center', quality=51)
+        return get_thumbnail(self.image, '100x100', crop='center', quality=51)
 
     def image_tmb(self):
         if self.image:
