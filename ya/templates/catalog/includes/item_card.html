@@ -31,7 +31,7 @@
         </ul>
 
         <div class="card-body">
-          <p>{{ item.text |safe|truncatewords_html:10 }}</p>
+          <p>{{ item.text|safe|truncatewords_html:10 }}</p>
         </div>
         <a class="btn btn-primary"
            href="{% url 'catalog:item_detail' item.id %}"> подробная

@@ -1,24 +1,13 @@
-from django.db.models import Prefetch
 from django.shortcuts import HttpResponse, render
 
-from catalog.models import Item, Tag
+from catalog.models import Item
 
 
 def home(request):
     items = (
-        Item.objects.select_related('category', 'main_image')
+        Item.objects.items_queryset()
         .filter(
-            is_published=True, is_on_main=True, category__is_published=True
-        )
-        .prefetch_related(
-            Prefetch(
-                'tags', queryset=Tag.objects.all().filter(is_published=True)
-            )
-        )
-        .only(
-            'name',
-            'text',
-            'category__name',
+            is_on_main=True,
         )
         .order_by('name')
     )

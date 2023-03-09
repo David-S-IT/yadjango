@@ -31,7 +31,10 @@
     </ul>
     <hr>
     {{ item.text | safe | linebreaks }}
+    <br>
+    <a href="{% url 'catalog:items_list' %}">К списку товаров</a>
     <hr>
+
     <h2> Галерея товара </h2>
     <br>
     {% for image in item.gallery.all %}
