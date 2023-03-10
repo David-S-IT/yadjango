@@ -3,7 +3,7 @@ from django.db import models
 
 class ItemManager(models.Manager):
     def items_queryset(self):
-        from .models import Item, Tag
+        from .models import Category, Item, Tag
 
         return (
             self.get_queryset()
@@ -22,6 +22,6 @@ class ItemManager(models.Manager):
             .only(
                 Item.name.field.name,
                 Item.text.field.name,
-                f'{Item.category.field.name}__name',
+                f'{Item.category.field.name}__{Category.name.field.name}',
             )
         )
