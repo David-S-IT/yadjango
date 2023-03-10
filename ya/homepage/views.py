@@ -9,7 +9,7 @@ def home(request):
         .filter(
             is_on_main=True,
         )
-        .order_by('name')
+        .order_by(Item.name.field.name)
     )
     context = {'items': items}
     template = 'homepage/index.html'

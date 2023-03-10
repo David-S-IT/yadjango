@@ -1,24 +1,27 @@
 from django.db import models
-from django.db.models import Prefetch
 
 
 class ItemManager(models.Manager):
     def items_queryset(self):
-        from .models import Tag
+        from .models import Item, Tag
 
         return (
             self.get_queryset()
-            .select_related('category', 'main_image')
+            .select_related(
+                Item.category.field.name, Item.main_image.related.name
+            )
             .filter(is_published=True, category__is_published=True)
             .prefetch_related(
-                Prefetch(
-                    'tags',
-                    queryset=Tag.objects.all().filter(is_published=True),
+                models.Prefetch(
+                    Item.tags.field.name,
+                    queryset=Tag.objects.filter(is_published=True).only(
+                        Tag.name.field.name
+                    ),
                 )
             )
             .only(
-                'name',
-                'text',
-                'category__name',
+                Item.name.field.name,
+                Item.text.field.name,
+                Item.category.field.name + '__name',
             )
         )
