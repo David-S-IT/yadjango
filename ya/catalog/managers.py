@@ -22,6 +22,6 @@ class ItemManager(models.Manager):
             .only(
                 Item.name.field.name,
                 Item.text.field.name,
-                Item.category.field.name + '__name',
+                f'{Item.category.field.name}__name',
             )
         )
