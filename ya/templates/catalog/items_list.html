@@ -32,9 +32,7 @@
           <div class="card-footer text-muted">
             Теги:
             {% for tag in item.tags.all %}
-              {{ tag.name }}
-              {% if not forloop.last %}
-                ,
+              {{ tag.name }}{% if not forloop.last %},
               {% endif %}
             {% empty %}
               <p>Тегов пока нет</p>
