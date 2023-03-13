@@ -26,24 +26,29 @@
         <li class="nav-item m-auto">
           <a class="nav-link
           {% if view_name  == 'homepage:index' %}disabled active{% endif %}"
-             href="{% url 'homepage:index' %}">На главную</a>
+             href="{% url 'homepage:index' %}"> На главную </a>
         </li>
         <li class="nav-item m-auto">
           <a class="nav-link
           {% if view_name  == 'about:about' %}disabled active{% endif %}"
-             href="{% url 'about:about' %}">Об проекте</a>
+             href="{% url 'about:about' %}"> О проекте </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if view_name  == 'catalog:items_list' %}disabled active{% endif %}"
              href="{% url 'catalog:items_list' %}"> Список товаров </a>
         </li>
+        {% if request.user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link"
+               href="{% url 'admin:index' %}"> Админка </a>
+          </li>
+        {% endif %}
         <li class="nav-item">
           <form action="/search/" method="get"
                 class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
             <input name="q" type="search" class="form-control"
                    placeholder="Search..." aria-label="Search">
           </form>
-
         </li>
 
       </ul>
