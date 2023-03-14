@@ -69,7 +69,7 @@ class FormTests(TestCase):
             Feedback.objects.filter(
                 text=form_data['text'],
                 email=form_data['email'],
-                status=Feedback.IN_PROCESSING,
+                status=Feedback.GET,
             ).exists(),
             msg='Отзыв создался с неверными полями.',
         )
