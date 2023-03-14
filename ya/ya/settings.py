@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.contrib.messages import constants as message_constants
 import dotenv
 
 dotenv.load_dotenv()
@@ -39,6 +40,8 @@ DEBUG_ENV = os.getenv('DEBUG', 'true').lower()
 DEBUG = True
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
+ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'default@example.com')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +60,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'core.apps.CoreConfig',
     'homepage.apps.HomepageConfig',
+    'feedback.apps.FeedbackConfig',
 ]
 
 INTERNAL_IPS = [
@@ -305,3 +309,8 @@ CKEDITOR_CONFIGS = {
         ),
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'send_mail'
+
+MESSAGE_TAGS = {message_constants.SUCCESS: 'w-50 btn btn-success'}

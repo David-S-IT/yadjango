@@ -17,7 +17,7 @@ https://www.python.org/ftp/python/3.9.13/python-3.9.13-amd64.exe
 - - 32-битная версия:
 https://www.python.org/ftp/python/3.9.13/python-3.9.13.exe
 #### 2. Клонировать репозиторий и перейти в него в командной строке:
-```
+```bash
 git clone https://github.com/David-S-IT/yadjango.git
 cd yadjango
 ```
@@ -39,10 +39,10 @@ cd yadjango
 Выйти из папки requirements: ```cd ..```  
 
 #### 6. Создать и применить миграции
-```
+```bash
 python manage.py makemigrations
 ```
-```
+```bash
 python manage.py migrate
 ```
 
@@ -52,7 +52,7 @@ python manage.py migrate
 - Windows: ```python```
 
 Выполнить:  
-```
+```python
 from django.core.management.utils import get_random_secret_key
 print(get_random_secret_key())
 ```
@@ -67,7 +67,7 @@ print(get_random_secret_key())
 ## Фикстуры для наполнения базы
 Используйте фикстуры для тестов в папке ya, где manage.py
 Чтобы загрузить фикстуры выполнить:
-```
+```bash
 python manage.py loaddata fixtures.json
 ```
 Пользователь: admin  
@@ -75,7 +75,7 @@ python manage.py loaddata fixtures.json
 
 ## Чтобы создать своего суперпользователя с правами админа
 Выполнить и исполнить предложенные инструкции в консоли
-```
+```bash
 python manage.py createsuperuser
 ```
 

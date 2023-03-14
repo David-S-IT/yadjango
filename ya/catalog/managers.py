@@ -8,7 +8,8 @@ class ItemManager(models.Manager):
         return (
             self.get_queryset()
             .select_related(
-                Item.category.field.name, Item.main_image.related.name
+                Item.category.field.name,
+                Item.main_image.related.name,
             )
             .filter(is_published=True, category__is_published=True)
             .prefetch_related(
@@ -17,7 +18,7 @@ class ItemManager(models.Manager):
                     queryset=Tag.objects.filter(is_published=True).only(
                         Tag.name.field.name
                     ),
-                )
+                ),
             )
             .only(
                 Item.name.field.name,

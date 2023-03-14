@@ -30,6 +30,16 @@
   }
 },
 {
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name": "Обувь",
+    "is_published": true,
+    "slug": "boots",
+    "weight": 100
+  }
+},
+{
   "model": "catalog.tag",
   "pk": 1,
   "fields": {
@@ -102,7 +112,7 @@
   "pk": 2,
   "fields": {
     "name": "Огурцы",
-    "is_published": false,
+    "is_published": true,
     "category": 3,
     "text": "<p>Огуре́ц роскошно</p>\r\n\r\n<p>Огуре́ц обыкнове́нный, или&nbsp;<em>Огурец</em>&nbsp;посевно́й (лат. Cucumis sativus), &mdash; однолетнее травянистое растение, вид рода&nbsp;<em>Огурец</em>&nbsp;(Cucumis) семейства Тыквенные&nbsp;...</p>",
     "is_on_main": true,
@@ -176,6 +186,21 @@
     "is_published": true,
     "category": 1,
     "text": "<p>&laquo;<em>Властелин колец</em>&raquo; &mdash; одна из самых известных и популярных&nbsp;<em>книг</em>&nbsp;XX века.&nbsp;<em>Книга</em>&nbsp;переведена по меньшей мере на 38 языков. Она оказала огромное влияние на литературу&nbsp;...</p>\r\n\r\n<p>Автор: Дж.Р.Толкиен</p>\r\n\r\n<p>Роскошно книга Властелин Колец.&nbsp;</p>",
+    "is_on_main": true,
+    "tags": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "catalog.item",
+  "pk": 8,
+  "fields": {
+    "name": "7 навыков",
+    "is_published": false,
+    "category": 1,
+    "text": "<p>Семь навыков высокоэффективных тинейджеров.&nbsp;Бестселлер 1998 года по самопомощи, написанный Шоном Кови, сыном Стивена Кови. Книга была опубликована 9 октября 1998 года издательством Touchstone Books и в значительной степени основана на Семи привычках высокоэффективных людей. В 1999 году&nbsp;</p>\r\n\r\n<p>превосходно!</p>",
     "is_on_main": true,
     "tags": [
       1,
@@ -312,6 +337,22 @@
   }
 },
 {
+  "model": "catalog.galleryimage",
+  "pk": 19,
+  "fields": {
+    "image": "media/2023/03/7habits1.webp",
+    "item": 8
+  }
+},
+{
+  "model": "catalog.galleryimage",
+  "pk": 20,
+  "fields": {
+    "image": "media/2023/03/7habits2.jpg",
+    "item": 8
+  }
+},
+{
   "model": "catalog.mainimage",
   "pk": 1,
   "fields": {
@@ -365,6 +406,14 @@
   "fields": {
     "image": "media/2023/03/властелин_колец2_RDxyrMl.jpg",
     "item": 7
+  }
+},
+{
+  "model": "catalog.mainimage",
+  "pk": 9,
+  "fields": {
+    "image": "media/2023/03/7habits.jpg",
+    "item": 8
   }
 }
 ]

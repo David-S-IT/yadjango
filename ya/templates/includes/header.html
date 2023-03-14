@@ -37,6 +37,10 @@
           <a class="nav-link {% if view_name  == 'catalog:items_list' %}disabled active{% endif %}"
              href="{% url 'catalog:items_list' %}"> Список товаров </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'feedback:feedback' %}disabled active{% endif %}"
+             href="{% url 'feedback:feedback' %}"> Оставить отзыв </a>
+        </li>
         {% if request.user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link"
