@@ -312,5 +312,6 @@ CKEDITOR_CONFIGS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'send_mail'
+EMAIL_URL = '/uploads/'
 
 MESSAGE_TAGS = {message_constants.SUCCESS: 'w-50 btn btn-success'}

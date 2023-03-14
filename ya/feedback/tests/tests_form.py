@@ -49,3 +49,27 @@ class FormTests(TestCase):
             data=form_data,
         )
         self.assertRedirects(responce, endpoint)
+
+    def test_create_feedback(self):
+        feedbacks_count = Feedback.objects.count()
+
+        form_data = {'text': 'тест', 'email': 'default@yandex.ru'}
+        Client().post(
+            reverse('feedback:feedback'),
+            data=form_data,
+        )
+
+        self.assertEqual(
+            Feedback.objects.count(),
+            feedbacks_count + 1,
+            msg='Отзыв не создался.',
+        )
+
+        self.assertTrue(
+            Feedback.objects.filter(
+                text=form_data['text'],
+                email=form_data['email'],
+                status=Feedback.IN_PROCESSING,
+            ).exists(),
+            msg='Отзыв создался с неверными полями.',
+        )

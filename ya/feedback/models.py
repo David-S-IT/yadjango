@@ -2,6 +2,15 @@ from django.db import models
 
 
 class Feedback(models.Model):
+    GET = 'get'
+    IN_PROCESSING = 'saw'
+    ANSWERED = 'ans'
+    STATUSES = [
+        (GET, 'получено'),
+        (IN_PROCESSING, 'в обработке'),
+        (ANSWERED, 'ответ дан'),
+    ]
+
     text = models.CharField(
         'Текст',
         max_length=200,
@@ -13,6 +22,12 @@ class Feedback(models.Model):
         max_length=150,
         default='default@example.com',
         help_text='Максимум 150 символов.',
+    )
+    status = models.CharField(
+        'Статус обработки',
+        max_length=3,
+        choices=STATUSES,
+        default=GET,
     )
 
     class Meta:
