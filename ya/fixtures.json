@@ -445,5 +445,25 @@
     "email": "s@v.com",
     "status": "get"
   }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 49,
+  "fields": {
+    "text": "test message",
+    "created_on": "2023-03-15T14:09:56.903Z",
+    "email": "s@v.com",
+    "status": "get"
+  }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 61,
+  "fields": {
+    "text": "test mail",
+    "created_on": "2023-03-15T14:29:54.289Z",
+    "email": "s@v.com",
+    "status": "get"
+  }
 }
 ]
