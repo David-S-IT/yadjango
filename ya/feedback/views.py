@@ -16,7 +16,7 @@ def feedback(request):
         email = form.cleaned_data[Feedback.email.field.name]
 
         mail_text = f"""Здравствуйте!
-        
+
 Вы получили это сообщение, так как написали отзыв в Yadjango.
 
 Ваше сообщение:
