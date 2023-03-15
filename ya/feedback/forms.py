@@ -20,10 +20,10 @@ class FeedbackForm(forms.ModelForm):
             Feedback.email.field.name: 'Ваш контактный email',
         }
         help_texts = {
-            Feedback.email.field.name: 'На этот адрес будет отправлен ответ.',
+            Feedback.email.field.name: 'На этот адрес будет отправлен ответ',
         }
         widgets = {
             Feedback.email.field.name: forms.EmailInput(
-                attrs={'placeholder': Feedback.email.field.default}
+                attrs={'placeholder': 'default@example.com'}
             )
         }

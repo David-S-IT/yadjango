@@ -7,8 +7,8 @@ class NameBaseModel(models.Model):
     name = models.CharField(
         'название',
         unique=True,
-        max_length=150,
-        help_text='Максимальная длина 150 символов',
+        max_length=64,
+        help_text='Максимальная длина 64 символ',
     )
 
     class Meta:

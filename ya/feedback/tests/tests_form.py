@@ -34,8 +34,8 @@ class FormTests(TestCase):
             ('email', self.form.fields['email'].help_text),
         }
         help_texts_correct = {
-            'text': 'Максимальная длина 200 символов.',
-            'email': 'На этот адрес будет отправлен ответ.',
+            'text': 'Максимальная длина 200 символов',
+            'email': 'На этот адрес будет отправлен ответ',
         }
         for name, field in help_texts:
             with self.subTest(name=name, field=field):

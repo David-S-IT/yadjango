@@ -415,5 +415,35 @@
     "image": "media/2023/03/7habits.jpg",
     "item": 8
   }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 46,
+  "fields": {
+    "text": "tests_message",
+    "created_on": "2023-03-14T12:29:50.437Z",
+    "email": "default@example.com",
+    "status": "ans"
+  }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 47,
+  "fields": {
+    "text": "раз, раз, раз, ээ",
+    "created_on": "2023-03-14T13:37:02.827Z",
+    "email": "default@example.com",
+    "status": "get"
+  }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 48,
+  "fields": {
+    "text": "test_feedback\r\n\r\n\r\nend",
+    "created_on": "2023-03-15T13:59:49.926Z",
+    "email": "s@v.com",
+    "status": "get"
+  }
 }
 ]

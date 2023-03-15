@@ -59,8 +59,8 @@ INSTALLED_APPS = [
     'about.apps.AboutConfig',
     'catalog.apps.CatalogConfig',
     'core.apps.CoreConfig',
-    'homepage.apps.HomepageConfig',
     'feedback.apps.FeedbackConfig',
+    'homepage.apps.HomepageConfig',
 ]
 
 INTERNAL_IPS = [

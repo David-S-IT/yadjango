@@ -11,23 +11,27 @@ class Feedback(models.Model):
         (ANSWERED, 'ответ дан'),
     ]
 
-    text = models.CharField(
-        'Текст',
+    text = models.TextField(
+        'текст',
         max_length=200,
-        help_text='Максимальная длина 200 символов.',
+        help_text='Максимальная длина 200 символов',
     )
-    created_on = models.DateTimeField('Дата создания', auto_now_add=True)
+    created_on = models.DateTimeField(
+        'дата создания',
+        auto_now_add=True,
+        help_text='Когда был написан отзыв',
+    )
     email = models.EmailField(
-        'Почта',
-        max_length=150,
-        default='default@example.com',
-        help_text='Максимум 150 символов.',
+        'почта',
+        max_length=254,
+        help_text='Максимум 150 символов',
     )
     status = models.CharField(
-        'Статус обработки',
+        'статус обработки',
         max_length=3,
         choices=STATUSES,
         default=GET,
+        help_text='Что сейчас происходит с отзывом',
     )
 
     class Meta:
