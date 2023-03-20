@@ -117,7 +117,7 @@ class MainImage(ImageBaseModel):
         on_delete=models.CASCADE,
         verbose_name='товар',
         null=True,
-        help_text=('Наименование товара'),
+        help_text='Наименование товара',
     )
 
     class Meta:

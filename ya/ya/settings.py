@@ -36,8 +36,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'not_so_secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG_ENV = os.getenv('DEBUG', 'true').lower()
-# DEBUG = DEBUG_ENV in true_values
-DEBUG = True
+DEBUG = DEBUG_ENV in true_values
+
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'default@example.com')
