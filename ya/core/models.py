@@ -43,7 +43,7 @@ class SlugBaseModel(models.Model):
 
 class ImageBaseModel(models.Model):
     image = models.ImageField(
-        'Будет приведено к ширине 300px', upload_to='media/%Y/%m', default=''
+        'Будет приведено к ширине 300px', upload_to='media/%Y/%m/', default=''
     )
 
     class Meta:

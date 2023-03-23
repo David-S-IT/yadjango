@@ -10,6 +10,8 @@ urlpatterns = [
     path('feedback/', include('feedback.urls', namespace='feedback')),
     path('admin/', admin.site.urls, name='django_admin'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('auth/', include('users.urls', namespace='users')),
+    path('auth/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

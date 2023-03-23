@@ -107,7 +107,7 @@ class GalleryImage(ImageBaseModel):
         verbose_name = 'изображение для галереи'
         verbose_name_plural = 'изображения для галереи'
 
-    def str(self):
+    def __str__(self):
         return f'Изображение - {self.item}'
 
 
@@ -137,5 +137,5 @@ class MainImage(ImageBaseModel):
     image_tmb.short_description = 'основное фото товара'
     image_tmb.allow_tags = True
 
-    def str(self):
+    def __str__(self):
         return f'Основное изображение для {self.item}'

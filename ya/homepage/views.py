@@ -1,4 +1,5 @@
-from django.shortcuts import HttpResponse, render
+from users.models import Profile
+from django.shortcuts import get_object_or_404, render, redirect
 
 from catalog.models import Item
 
@@ -17,4 +18,18 @@ def home(request):
 
 
 def coffee(request):
-    return HttpResponse('Я чайник', status=418)
+    if request.user.is_authenticated:
+        user_profile = get_object_or_404(
+            Profile.objects.get_queryset().only(
+                Profile.coffee_count.field.name,
+            ),
+            user=request.user.id,
+        )
+
+        user_profile.coffee_count += 1
+        user_profile.save()
+
+        return redirect('users:profile')
+
+    template = 'homepage/coffee.html'
+    return render(request, template, status=418)

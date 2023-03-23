@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Пользователи {% endblock %}
+{% block content %}
+  <div class="container">
+    <h1>Список пользователей</h1>
+    <hr>
+    {% for user in users %}
+      <div class="container mb-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.username }}</h5>
+
+            {% if user.profile.image %}
+              {% load thumbnail %}
+              {% thumbnail user.profile.image "100x100" crop="center" as im %}
+                <img src="{{ im.url }}"
+                     width="{{ im.width }}"
+                     height="{{ im.height }}"
+                     class="rounded float-end"
+                     alt="Аватарка">
+              {% endthumbnail %}
+            {% endif %}
+
+            {{ user.first_name|safe }}
+            {{ user.last_name|safe }}
+            <br>
+            <p><a href="{% url 'users:user_detail' user.id %}">
+              Подробнее о пользователе</a></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

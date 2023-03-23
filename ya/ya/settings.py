@@ -17,13 +17,6 @@ from django.contrib.messages import constants as message_constants
 import dotenv
 
 dotenv.load_dotenv()
-true_values = (
-    'true',
-    'yes',
-    '1',
-    'y',
-    't',
-)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,12 +28,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'not_so_secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG_ENV = os.getenv('DEBUG', 'true').lower()
-DEBUG = DEBUG_ENV in true_values
+DEBUG = os.getenv('DEBUG', 'True').capitalize() == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'default@example.com')
+
+IS_ACTIVE = (
+    os.getenv('IS_ACTIVE', 'True' if DEBUG else 'False').capitalize() == 'True'
+)
 
 # Application definition
 
@@ -61,6 +57,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'feedback.apps.FeedbackConfig',
     'homepage.apps.HomepageConfig',
+    'users.apps.UsersConfig',
 ]
 
 INTERNAL_IPS = [
@@ -79,11 +76,9 @@ MIDDLEWARE = [
     'ya.middlewares.middleware.ReverseTextMiddleware',
 ]
 
-MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT_ENV = os.getenv(
-    'MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT', 'false'
-).lower()
 MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT = (
-    MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT_ENV in true_values
+    os.getenv('MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT', 'False').capitalize()
+    == 'True'
 )
 
 ROOT_URLCONF = 'ya.urls'
@@ -317,3 +312,7 @@ EMAIL_URL = '/uploads/'
 MESSAGE_TAGS = {
     message_constants.SUCCESS: 'w-100 alert alert-success text-center'
 }
+
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/auth/login/'
