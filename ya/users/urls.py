@@ -10,8 +10,8 @@ from django.contrib.auth.views import (
 )
 from django.urls import path, register_converter
 
-from . import views
 from catalog import converter
+from . import views
 
 register_converter(converter.PositiveIntegerConverter, 'PosIntConv')
 

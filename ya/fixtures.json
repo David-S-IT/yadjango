@@ -465,5 +465,35 @@
     "email": "s@v.com",
     "status": "get"
   }
+},
+{
+  "model": "users.profile",
+  "pk": 1,
+  "fields": {
+    "user": 13,
+    "birthday": null,
+    "image": "",
+    "coffee_count": 0
+  }
+},
+{
+  "model": "users.profile",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "birthday": "2023-03-22",
+    "image": "media/2023/03/Зима.jpg",
+    "coffee_count": 13
+  }
+},
+{
+  "model": "users.profile",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "birthday": null,
+    "image": "",
+    "coffee_count": 11
+  }
 }
 ]

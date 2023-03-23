@@ -1,11 +1,10 @@
 from datetime import datetime
 from unittest.mock import patch
 
-import pytz
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
-from django.utils import timezone
+import pytz
 
 from ..forms import CustomUserCreationForm
 
@@ -14,9 +13,9 @@ User = get_user_model()
 
 class FormTests(TestCase):
     @classmethod
-    def setUp(self):
+    def setUp(cls):
         super().setUpClass()
-        self.form = CustomUserCreationForm()
+        cls.form = CustomUserCreationForm()
 
     def tearDown(self):
         super().tearDown()
@@ -64,8 +63,12 @@ class FormTests(TestCase):
             ),
         }
         help_texts_correct = {
-            User.username.field.name: 'Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.',
-            User.email.field.name: 'На этот адрес будет отправлено письмо с подтверждением',
+            User.username.field.name: 'Обязательное поле.'
+            'Не более 150 символов.'
+            'Только буквы, цифры и символы'
+            '@/./+/-/_.',
+            User.email.field.name: 'На этот адрес будет отправлено письмо с'
+            'подтверждением',
         }
         for name, field in help_texts:
             with self.subTest(name=name, field=field):

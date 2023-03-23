@@ -1,5 +1,5 @@
+from django.shortcuts import get_object_or_404, redirect, render
 from users.models import Profile
-from django.shortcuts import get_object_or_404, render, redirect
 
 from catalog.models import Item
 

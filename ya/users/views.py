@@ -1,19 +1,17 @@
 from datetime import timedelta
 
-from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy, reverse
-from django.views.generic import DetailView, FormView, ListView, CreateView
+from django.urls import reverse
 from django.utils import timezone
-from django.http import HttpResponseNotFound, Http404
 
 from .forms import (
-    CustomUserCreationForm,
     CustomUserChangeForm,
+    CustomUserCreationForm,
     ProfileChangeForm,
 )
 from .models import Profile

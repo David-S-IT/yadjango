@@ -1,10 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import (
-    AuthenticationForm,
     UserChangeForm,
     UserCreationForm,
 )
-from django import forms
 
 from .models import Profile
 
@@ -24,7 +22,8 @@ class CustomUserCreationForm(UserCreationForm):
             User.email.field.name,
         )
         help_texts = {
-            User.email.field.name: 'На этот адрес будет отправлено письмо с подтверждением',
+            User.email.field.name: 'На этот адрес будет отправлено письмо с'
+            'подтверждением',
         }
 
 
