@@ -63,11 +63,11 @@ class FormTests(TestCase):
             ),
         }
         help_texts_correct = {
-            User.username.field.name: 'Обязательное поле.'
-            'Не более 150 символов.'
-            'Только буквы, цифры и символы'
+            User.username.field.name: 'Обязательное поле. '
+            'Не более 150 символов. '
+            'Только буквы, цифры и символы '
             '@/./+/-/_.',
-            User.email.field.name: 'На этот адрес будет отправлено письмо с'
+            User.email.field.name: 'На этот адрес будет отправлено письмо с '
             'подтверждением',
         }
         for name, field in help_texts:

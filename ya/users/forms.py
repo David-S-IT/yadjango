@@ -22,7 +22,7 @@ class CustomUserCreationForm(UserCreationForm):
             User.email.field.name,
         )
         help_texts = {
-            User.email.field.name: 'На этот адрес будет отправлено письмо с'
+            User.email.field.name: 'На этот адрес будет отправлено письмо с '
             'подтверждением',
         }
 
