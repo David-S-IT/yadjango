@@ -1,6 +1,7 @@
 from datetime import timedelta
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
@@ -78,7 +79,7 @@ def activate(request, username):
     return render(request, template, context)
 
 
-def user_list(request):
+def users_list(request):
     users = (
         User.objects.get_queryset()
         .select_related(
@@ -92,7 +93,7 @@ def user_list(request):
             User.last_name.field.name,
         )
     )
-    template = 'users/user_list.html'
+    template = 'users/users_list.html'
     context = {'users': users}
     return render(request, template, context)
 
@@ -151,6 +152,9 @@ def profile(request):
     if form.is_valid() and form_profile.is_valid():
         form.save()
         form_profile.save()
+
+        messages.success(request, 'Изменения сохранены')
+
         return redirect('users:profile')
 
     template = 'users/profile.html'

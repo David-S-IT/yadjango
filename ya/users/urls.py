@@ -85,9 +85,9 @@ urlpatterns = [
         name='activate',
     ),
     path(
-        'user_list/',
-        views.user_list,
-        name='user_list',
+        'users_list/',
+        views.users_list,
+        name='users_list',
     ),
     path(
         'user_detail/<PosIntConv:pk>',

@@ -124,6 +124,7 @@ class FormTests(TestCase):
                         datetime.now().day
                         + (1 if now_hour + hour > 23 else 0),
                         now_hour + (0 if now_hour + hour > 23 else hour),
+                        datetime.now().minute + 1,
                         tzinfo=pytz.UTC,
                     )
 
@@ -152,8 +153,9 @@ class FormTests(TestCase):
             mock_date.return_value = datetime(
                 datetime.now().year,
                 datetime.now().month,
-                datetime.now().day + 1 if now_hour + 12 > 23 else 0,
-                now_hour + 0 if now_hour + 12 > 23 else 12,
+                datetime.now().day + (1 if now_hour + 12 > 23 else 0),
+                now_hour + (0 if now_hour + 12 > 23 else 12),
+                datetime.now().minute + 1,
                 tzinfo=pytz.UTC,
             )
             Client().get(

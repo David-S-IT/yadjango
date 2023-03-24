@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %} Не авторизован {% endblock %}
+{% block content %}
+  <div class="container text-center">
+    <h3> Не авторизован </h3>
+    <br>
+    <h5> Благодарим вас за время, проведенное на этом сайте. </h5>
+    <br>
+    <a href="{% url 'users:login' %}"> Войти снова </a>
+  </div>
+{% endblock %}

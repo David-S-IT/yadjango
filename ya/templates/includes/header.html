@@ -5,61 +5,89 @@
     <nav class="navbar navbar-expand-lg navbar-light "
          style="background-color: #bcdaf6">
     <div class="container">
-    <a class="nav-link {% if view_name  == 'homepage:index' %}disabled{% endif %}"
-       href="{% url 'homepage:index' %}">
-      <img src="{% static 'img/logo.png' %}" width="30" height="30"
-           class="d-inline-block align-top" alt="">
-    </a>
+      <a class="nav-link {% if view_name  == 'homepage:index' %}disabled{% endif %}"
+         href="{% url 'homepage:index' %}">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30"
+             class="d-inline-block align-top" alt="">
+      </a>
 
-    <button class="navbar-toggler border border-3 border-dark"
-            style="--bs-border-opacity: .7;" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbars"
-            aria-controls="navbars" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler border border-3 border-dark"
+              style="--bs-border-opacity: .7;" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbars"
+              aria-controls="navbars" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
 
-    <div class="collapse navbar-collapse flex-row-reverse" id="navbars">
+      <div class="collapse navbar-collapse flex-row-reverse nav justify-content-center"
+           id="navbars">
 
-      <ul class="navbar-nav">
-        <li class="nav-item m-auto">
-          <a class="nav-link
+        <ul class="navbar-nav">
+          <li class="nav-item m-auto">
+            <a class="nav-link
           {% if view_name  == 'homepage:index' %}disabled active{% endif %}"
-             href="{% url 'homepage:index' %}"> На главную </a>
-        </li>
-        <li class="nav-item m-auto">
-          <a class="nav-link
-          {% if view_name  == 'about:about' %}disabled active{% endif %}"
-             href="{% url 'about:about' %}"> О проекте </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if view_name  == 'catalog:items_list' %}disabled active{% endif %}"
-             href="{% url 'catalog:items_list' %}"> Список товаров </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if view_name  == 'feedback:feedback' %}disabled active{% endif %}"
-             href="{% url 'feedback:feedback' %}"> Оставить отзыв </a>
-        </li>
-        {% if request.user.is_superuser %}
-          <li class="nav-item">
-            <a class="nav-link"
-               href="{% url 'admin:index' %}"> Админка </a>
+               href="{% url 'homepage:index' %}"> На главную </a>
           </li>
-        {% endif %}
-{#        <li class="nav-item">#}
-{#          <form action="/search/" method="get"#}
-{#                class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">#}
-{#            <input name="q" type="search" class="form-control"#}
-{#                   placeholder="Найти..." aria-label="Search">#}
-{#          </form>#}
-{#        </li>#}
+          <li class="nav-item m-auto">
+            <a class="nav-link
+          {% if view_name  == 'about:about' %}disabled active{% endif %}"
+               href="{% url 'about:about' %}"> О проекте </a>
+          </li>
+          <li class="nav-item m-auto">
+            <a class="nav-link {% if view_name  == 'catalog:items_list' %}disabled active{% endif %}"
+               href="{% url 'catalog:items_list' %}"> Список товаров </a>
+          </li>
+          <li class="nav-item m-auto">
+            <a class="nav-link {% if view_name  == 'users:users_list' %}disabled active{% endif %}"
+               href="{% url 'users:users_list' %}"> Пользователи </a>
+          </li>
+          <li class="nav-item m-auto">
+            <a class="nav-link {% if view_name  == 'feedback:feedback' %}disabled active{% endif %}"
+               href="{% url 'feedback:feedback' %}"> Оставить отзыв </a>
+          </li>
 
-      </ul>
+          {% if user.is_authenticated %}
+            <li class="nav-item m-auto">
+              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:login' %}disabled active{% endif %}"
+                 href="{% url 'users:profile' %}"> Профиль </a>
+            </li>
+            <li class="nav-item m-auto">
+              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:sign_up' %}disabled active{% endif %}"
+                 href="{% url 'users:logout' %}"> Выйти </a>
+            </li>
+          {% else %}
+            <li class="nav-item m-auto">
+              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:login' %}disabled active{% endif %}"
+                 href="{% url 'users:login' %}"> Войти </a>
+            </li>
+            <li class="nav-item m-auto">
+              <a class="nav-link btn btn-warning me-2 {% if view_name  == 'users:sign_up' %}disabled active{% endif %}"
+                 href="{% url 'users:sign_up' %}"> Зарегистрироваться </a>
+            </li>
+          {% endif %}
+
+          {% if request.user.is_superuser %}
+            <li class="nav-item m-auto">
+              <a class="nav-link  btn btn-info"
+                 href="{% url 'admin:index' %}"> Админка </a>
+            </li>
+          {% endif %}
+
+          {#        <li class="nav-item m-auto">#}
+          {#          <form action="/search/" method="get"#}
+          {#                class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">#}
+          {#            <input name="q" type="search" class="form-control"#}
+          {#                   placeholder="Найти..." aria-label="Search">#}
+          {#          </form>#}
+          {#        </li>#}
+
+        </ul>
+      </div>
+
+
     </div>
   {% endwith %}
 
-
-  </div>
   </nav>
 </header>

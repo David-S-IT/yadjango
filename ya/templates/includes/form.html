@@ -1,0 +1,106 @@
+{% load user_filters %}
+
+<div class="form-group col-sm-5 mx-auto mb-2">
+
+  {% if messages %}
+    <div class="">
+      <p></p>
+      {% for message in messages %}
+        <h4{% if message.tags %}
+          class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <div class="alert alert-danger">
+          {{ error|escape }}
+        </div>
+      {% endfor %}
+
+      {{ field.label_tag }}
+      <p>{{ field|addclass:'form-control' }}</p>
+      {% if field.help_text %}
+        <p class="form-text text-muted">{{ field.help_text }}</p>
+      {% endif %}
+    {% endfor %}
+
+    {% for error in form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ error|escape }}
+      </div>
+    {% endfor %}
+
+
+    {% if request.resolver_match.view_name == 'users:profile' %}
+      {% for field in form_profile %}
+        {% for error in field.errors %}
+          <div class="alert alert-danger">
+            {{ error|escape }}
+          </div>
+        {% endfor %}
+
+        {{ field.label_tag }}
+        {% if user.profile.image and 'Аватарка' in field.label_tag %}
+          {% load thumbnail %}
+          {% thumbnail user.profile.image "300" crop="center" as im %}
+            <img class="my-2"
+                 src="{{ im.url }}"
+                 width="{{ im.width }}"
+                 height="{{ im.height }}"
+                 class="rounded float-end"
+                 alt="Аватарка">
+          {% endthumbnail %}
+        {% endif %}
+        <p>{{ field }}</p>
+        {% if field.help_text %}
+          <p class="form-text text-muted">{{ field.help_text }}</p>
+        {% endif %}
+      {% endfor %}
+
+      {% for error in form_profile.non_field_errors %}
+        <div class="alert alert-danger">
+          {{ error|escape }}
+        </div>
+      {% endfor %}
+
+      <label for="id_coffee_count">Количество попыток сварить кофе:</label>
+      <p>
+        <sub type="number" class="form-control"
+             id="id_coffee_count">{{ user.profile.coffee_count }}</sub>
+      </p>
+      <p>
+        <button class="w-75 btn btn-outline-secondary btn-lg d-grid gap-2 mx-auto"
+                type="submit"
+                formaction="{% url 'homepage:coffee' %}">
+          Выпить кофе
+        </button>
+      </p>
+    {% endif %}
+
+
+    <button class="btn btn-outline-primary btn-lg d-grid gap-2 mx-auto"
+            type="submit">
+      {% with request.resolver_match.view_name as view_name %}
+        {% if view_name == 'users:sign_up' %}
+          Зарегистрироваться
+        {% elif view_name == 'users:login' %}
+          Войти
+        {% elif view_name == 'users:password_change' %}
+          Сменить пароль
+        {% elif view_name == 'users:password_reset_confirm' %}
+          Изменить мой пароль
+        {% elif view_name == 'users:password_reset' %}
+          Восстановить мой пароль
+        {% elif view_name == 'users:profile' %}
+          Сохранить
+        {% endif %}
+      {% endwith %}
+
+    </button>
+
+  </form>
+</div>
