@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-{% block title %} Пользователь {{ user.username }} {% endblock %}
+{% block title %} Пользователь {{ user_pk.username }} {% endblock %}
 {% block content %}
   <div class="container">
     <div class="col-lg-12">
-      <h2 class="text-center">{{ user.username }}</h2>
+      <h2 class="text-center">{{ user_pk.username }}</h2>
 
-      {% if user.profile.image %}
+      {% if user_pk.profile.image %}
         {% load thumbnail %}
-        {% thumbnail user.profile.image "300" crop="center" as im %}
+        {% thumbnail user_pk.profile.image "300" crop="center" as im %}
           <img class="my-2"
                src="{{ im.url }}"
                width="{{ im.width }}"
@@ -19,34 +19,39 @@
 
       <ul>
         <li>
-          Email: {{ user.email }}
+          Email: {{ user_pk.email }}
         </li>
         <li>
           Имя:
-          {% if user.first_name %}
-            {{ user.first_name }}
+          {% if user_pk.first_name %}
+            {{ user_pk.first_name }}
           {% else %}
             <div class="d-inline-block text-muted">-не указано-</div>
           {% endif %}
         </li>
         <li>
           Фамилия:
-          {% if user.last_name %}
-            {{ user.last_name }}
+          {% if user_pk.last_name %}
+            {{ user_pk.last_name }}
           {% else %}
             <div class="d-inline-block text-muted">-не указано-</div>
           {% endif %}
         </li>
         <li>
           Дата рождения:
-          {% if user.profile.birthday %}
-            {{ user.profile.birthday }}
+          {% if user_pk.profile.birthday %}
+            {{ user_pk.profile.birthday }}
           {% else %}
             <div class="d-inline-block text-muted">-не указано-</div>
           {% endif %}
         </li>
         <li>
-          Количество попыток сварить кофе: {{ user.profile.coffee_count }}
+          Количество попыток сварить кофе:
+          {% if not user_pk.profile.coffee_count %}
+            0
+          {% else %}
+            {{ user_pk.profile.coffee_count }}
+          {% endif %}
         </li>
       </ul>
     </div>

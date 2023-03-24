@@ -80,7 +80,7 @@ urlpatterns = [
         name='sign_up',
     ),
     path(
-        'activate/<username>',
+        'activate/<str:username>/',
         views.activate,
         name='activate',
     ),
@@ -90,7 +90,7 @@ urlpatterns = [
         name='users_list',
     ),
     path(
-        'user_detail/<PosIntConv:pk>',
+        'user_detail/<PosIntConv:pk>/',
         views.user_detail,
         name='user_detail',
     ),

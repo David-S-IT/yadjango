@@ -9,8 +9,6 @@
       <div class="container mb-3">
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title">{{ user.username }}</h5>
-
             {% if user.profile.image %}
               {% load thumbnail %}
               {% thumbnail user.profile.image "100x100" crop="center" as im %}
@@ -21,6 +19,8 @@
                      alt="Аватарка">
               {% endthumbnail %}
             {% endif %}
+
+            <h5 class="card-title">{{ user.username }}</h5>
 
             {{ user.first_name|safe }}
             {{ user.last_name|safe }}

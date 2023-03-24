@@ -42,11 +42,10 @@
             {{ error|escape }}
           </div>
         {% endfor %}
-
         {{ field.label_tag }}
-        {% if user.profile.image and 'Аватарка' in field.label_tag %}
+        {% if user_me.profile.image and 'Аватарка' in field.label_tag %}
           {% load thumbnail %}
-          {% thumbnail user.profile.image "300" crop="center" as im %}
+          {% thumbnail user_me.profile.image "300" crop="center" as im %}
             <img class="my-2"
                  src="{{ im.url }}"
                  width="{{ im.width }}"
@@ -59,6 +58,7 @@
         {% if field.help_text %}
           <p class="form-text text-muted">{{ field.help_text }}</p>
         {% endif %}
+        <hr>
       {% endfor %}
 
       {% for error in form_profile.non_field_errors %}
@@ -67,10 +67,20 @@
         </div>
       {% endfor %}
 
+      <a class="w-50 btn btn-outline-info btn-lg d-grid gap-2 mx-auto"
+              role="button"
+              href="{% url 'users:password_reset' %}">
+        Изменить пароль
+      </a>
+      <hr>
+
       <label for="id_coffee_count">Количество попыток сварить кофе:</label>
       <p>
         <sub type="number" class="form-control"
-             id="id_coffee_count">{{ user.profile.coffee_count }}</sub>
+             id="id_coffee_count">{{ user_me.profile.coffee_count }}</sub>
+      </p>
+      <p class="form-text text-muted">
+        Сколько чашек кофе вы пытались выпить.
       </p>
       <p>
         <button class="w-75 btn btn-outline-secondary btn-lg d-grid gap-2 mx-auto"

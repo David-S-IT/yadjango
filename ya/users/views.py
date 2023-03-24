@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import Http404
@@ -29,9 +29,9 @@ def sign_up(request):
         email = form.cleaned_data[User.email.field.name]
 
         user = form.save()
-        user.is_active = False
+        user.is_active = settings.IS_ACTIVE
         user.save()
-
+        Profile.objects.get_or_create(user=user)
         mail_text = f"""Здравствуйте!
 
 Вы получили это сообщение, так как зарегистрировались на Yadjango.
@@ -51,7 +51,6 @@ def sign_up(request):
             [email],
             fail_silently=False,
         )
-        login(request, user)
 
         return redirect('users:profile')
 
@@ -115,7 +114,7 @@ def user_detail(request, pk):
     )
 
     template = 'users/user_detail.html'
-    context = {'user': user}
+    context = {'user_pk': user}
     return render(request, template, context)
 
 
@@ -158,5 +157,5 @@ def profile(request):
         return redirect('users:profile')
 
     template = 'users/profile.html'
-    context = {'form': form, 'form_profile': form_profile, 'user': user}
+    context = {'form': form, 'form_profile': form_profile, 'user_me': user}
     return render(request, template, context)

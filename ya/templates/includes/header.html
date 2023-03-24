@@ -49,11 +49,11 @@
 
           {% if user.is_authenticated %}
             <li class="nav-item m-auto">
-              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:login' %}disabled active{% endif %}"
+              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:profile' %}disabled active{% endif %}"
                  href="{% url 'users:profile' %}"> Профиль </a>
             </li>
             <li class="nav-item m-auto">
-              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:sign_up' %}disabled active{% endif %}"
+              <a class="nav-link btn btn-light me-2 {% if view_name  == 'users:logout' %}disabled active{% endif %}"
                  href="{% url 'users:logout' %}"> Выйти </a>
             </li>
           {% else %}

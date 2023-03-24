@@ -10,16 +10,25 @@ class Profile(ImageBaseModel):
         'дата рождения',
         blank=True,
         null=True,
+        help_text=(
+            'Введите дату рождения вида: DD.MM.YYYY. '
+            'Где D - день, M - месяц, Y - год.'
+        ),
     )
     image = models.ImageField(
         'аватарка',
         upload_to='media/%Y/%m/',
         blank=True,
         null=True,
+        help_text=(
+            'По аватарке другие люди смогут вас узнавать, '
+            'а вам будет проще определять, в какой аккаунт вы вошли.'
+        ),
     )
     coffee_count = models.PositiveIntegerField(
         'количество попыток сварить кофе',
         default=0,
+        help_text='Сколько чашек кофе вы пытались выпить.',
     )
 
     class Meta:
@@ -28,4 +37,4 @@ class Profile(ImageBaseModel):
         verbose_name_plural = 'информация о пользователях'
 
     def __str__(self):
-        return self.user.username
+        return str(self.user)
