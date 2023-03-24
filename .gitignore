@@ -133,3 +133,5 @@ dmypy.json
 .vscode/
 .DS_Store
 
+# cache of media
+/ya/media/cache/
