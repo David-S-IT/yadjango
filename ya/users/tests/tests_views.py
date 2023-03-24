@@ -2,7 +2,7 @@ from datetime import datetime
 from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
-from django.test import Client, TestCase
+from django.test import Client, override_settings, TestCase
 from django.urls import reverse
 import pytz
 
@@ -11,6 +11,7 @@ from ..forms import CustomUserCreationForm
 User = get_user_model()
 
 
+@override_settings(IS_ACTIVE=False)
 class FormTests(TestCase):
     @classmethod
     def setUp(cls):
@@ -49,7 +50,8 @@ class FormTests(TestCase):
 
         self.assertRedirects(response, redirect)
 
-    def test_create_user(self):
+    @override_settings(IS_ACTIVE=False)
+    def test_create_user_is_active_false(self):
         users_count = User.objects.count()
 
         form_data = self.func_create_user()
@@ -65,6 +67,27 @@ class FormTests(TestCase):
                 username=form_data[User.username.field.name],
                 email=form_data[User.email.field.name],
                 is_active=False,
+            ).exists(),
+            msg='Пользователь создался с неверными полями.',
+        )
+
+    @override_settings(IS_ACTIVE=True)
+    def test_create_user_is_active_true(self):
+        users_count = User.objects.count()
+
+        form_data = self.func_create_user()
+
+        self.assertEqual(
+            User.objects.count(),
+            users_count + 1,
+            msg='Пользователь не создался.',
+        )
+
+        self.assertTrue(
+            User.objects.filter(
+                username=form_data[User.username.field.name],
+                email=form_data[User.email.field.name],
+                is_active=True,
             ).exists(),
             msg='Пользователь создался с неверными полями.',
         )
