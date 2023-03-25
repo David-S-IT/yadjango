@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.contrib.messages import constants as message_constants
 import dotenv
 
 dotenv.load_dotenv()
@@ -37,8 +38,6 @@ IS_ACTIVE = (
     os.getenv('IS_ACTIVE', 'True' if DEBUG else 'False').capitalize() == 'True'
 )
 
-if DEBUG:
-    from django.contrib.messages import constants as message_constants
 
 # Application definition
 
