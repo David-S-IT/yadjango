@@ -38,9 +38,9 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
         fields = (
-            'email',
-            'first_name',
-            'last_name',
+            User.email.field.name,
+            User.first_name.field.name,
+            User.last_name.field.name,
         )
 
 
@@ -55,6 +55,6 @@ class ProfileChangeForm(UserChangeForm):
     class Meta:
         model = Profile
         fields = (
-            'birthday',
-            'image',
+            Profile.birthday.field.name,
+            Profile.image.field.name,
         )

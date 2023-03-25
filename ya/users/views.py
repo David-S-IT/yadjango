@@ -31,8 +31,9 @@ def sign_up(request):
         user = form.save()
         user.is_active = settings.IS_ACTIVE
         user.save()
-        Profile.objects.get_or_create(user=user)
-        mail_text = f"""Здравствуйте!
+
+        if not settings.IS_ACTIVE:
+            mail_text = f"""Здравствуйте!
 
 Вы получили это сообщение, так как зарегистрировались на Yadjango.
 
@@ -44,13 +45,15 @@ def sign_up(request):
 
 © Yadjango
 """
-        send_mail(
-            'Yadjango company',
-            mail_text,
-            settings.ADMIN_EMAIL,
-            [email],
-            fail_silently=False,
-        )
+            send_mail(
+                'Yadjango company',
+                mail_text,
+                settings.ADMIN_EMAIL,
+                [email],
+                fail_silently=False,
+            )
+        else:
+            Profile.objects.get_or_create(user=user)
 
         return redirect('users:profile')
 
@@ -72,6 +75,8 @@ def activate(request, username):
 
     user.is_active = 1
     user.save()
+
+    Profile.objects.get_or_create(user=user)
 
     template = 'users/activate.html'
     context = {'username': username}

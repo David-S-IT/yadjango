@@ -12,7 +12,7 @@
     </div>
   {% endif %}
 
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
       {% for error in field.errors %}

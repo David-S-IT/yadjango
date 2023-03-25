@@ -7,6 +7,7 @@ from django.urls import reverse
 import pytz
 
 from ..forms import CustomUserCreationForm
+from ..models import Profile
 
 User = get_user_model()
 
@@ -21,6 +22,7 @@ class FormTests(TestCase):
     def tearDown(self):
         super().tearDown()
         User.objects.all().delete()
+        Profile.objects.all().delete()
 
     @staticmethod
     def func_create_user():

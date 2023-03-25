@@ -14,7 +14,6 @@ class FormTests(TestCase):
 
     def tearDown(self):
         super().tearDown()
-        User.objects.all().delete()
 
     def test_form_label(self):
         labels = {

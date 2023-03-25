@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-from django.contrib.messages import constants as message_constants
 import dotenv
 
 dotenv.load_dotenv()
@@ -38,6 +37,9 @@ IS_ACTIVE = (
     os.getenv('IS_ACTIVE', 'True' if DEBUG else 'False').capitalize() == 'True'
 )
 
+if DEBUG:
+    from django.contrib.messages import constants as message_constants
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
     'sorl.thumbnail',
-    'debug_toolbar',
     'ckeditor',
     'ckeditor_uploader',
     'about.apps.AboutConfig',
@@ -59,6 +60,8 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'users.apps.UsersConfig',
 ]
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -72,9 +75,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'ya.middlewares.middleware.ReverseTextMiddleware',
 ]
+if DEBUG:
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT = (
     os.getenv('MIDDLEWARE_CUSTOM_REVERSE_RU_TEXT', 'False').capitalize()
@@ -90,7 +94,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -99,6 +102,10 @@ TEMPLATES = [
         },
     },
 ]
+if DEBUG:
+    TEMPLATES[0]['OPTIONS']['context_processors'].append(
+        'django.template.context_processors.debug'
+    )
 
 WSGI_APPLICATION = 'ya.wsgi.application'
 
@@ -310,7 +317,8 @@ EMAIL_FILE_PATH = BASE_DIR / 'send_mail'
 EMAIL_URL = '/uploads/'
 
 MESSAGE_TAGS = {
-    message_constants.SUCCESS: 'w-100 alert alert-success text-center'
+    message_constants.SUCCESS: 'w-100 alert alert-success text-center',
+    message_constants.ERROR: 'w-100 alert alert-danger text-center',
 }
 
 LOGIN_URL = '/auth/login/'
