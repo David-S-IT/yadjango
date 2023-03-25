@@ -81,5 +81,4 @@ python manage.py createsuperuser
 
 ## ER диаграмма моделей
 https://app.quickdatabasediagrams.com/#/d/yPUaOE 
-
-
+![image](https://user-images.githubusercontent.com/106735641/227701981-6146c981-5cdf-414d-8dc1-353cbb9095b8.png)
