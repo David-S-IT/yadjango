@@ -35,7 +35,8 @@ cd yadjango
 Перейти в папку requirements: ```cd requirements```
 - Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
 - Дополнительный - для тестов: ```pip install -r requirements_test.txt```
-- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```
+- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```  
+
 Выйти из папки requirements: ```cd ..```  
 
 #### 6. Создать и применить миграции
