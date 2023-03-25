@@ -35,7 +35,8 @@ cd yadjango
 Перейти в папку requirements: ```cd requirements```
 - Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
 - Дополнительный - для тестов: ```pip install -r requirements_test.txt```
-- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```
+- Дополнительный - для разработки: ```pip install -r requirements_dev.txt```  
+
 Выйти из папки requirements: ```cd ..```  
 
 #### 6. Создать и применить миграции
@@ -79,7 +80,6 @@ python manage.py loaddata fixtures.json
 python manage.py createsuperuser
 ```
 
-## ER диаграмма моделей в приложении Catalog
+## ER диаграмма моделей
 https://app.quickdatabasediagrams.com/#/d/yPUaOE 
-
-
+![image](https://user-images.githubusercontent.com/106735641/227701981-6146c981-5cdf-414d-8dc1-353cbb9095b8.png)
