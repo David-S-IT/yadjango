@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -164,3 +165,7 @@ def profile(request):
     template = 'users/profile.html'
     context = {'form': form, 'form_profile': form_profile, 'user_me': user}
     return render(request, template, context)
+
+
+class CustomLoginView(LoginView):
+    redirect_authenticated_user = True

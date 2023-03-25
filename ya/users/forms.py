@@ -4,18 +4,14 @@ from django.contrib.auth.forms import (
     UserCreationForm,
 )
 
+from core.forms import BootstrapFormMixin
 from .models import Profile
 
 User = get_user_model()
 
 
-class CustomUserCreationForm(UserCreationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.visible_fields():
-            field.field.widget.attrs['class'] = 'form-control'
-
-    class Meta:
+class CustomUserCreationForm(BootstrapFormMixin, UserCreationForm):
+    class Meta(UserCreationForm.Meta):
         model = User
         fields = (
             User.username.field.name,
@@ -27,15 +23,10 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
 
-class CustomUserChangeForm(UserChangeForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.visible_fields():
-            field.field.widget.attrs['class'] = 'form-control'
-
+class CustomUserChangeForm(BootstrapFormMixin, UserChangeForm):
     password = None
 
-    class Meta:
+    class Meta(UserChangeForm.Meta):
         model = User
         fields = (
             User.email.field.name,
@@ -44,17 +35,17 @@ class CustomUserChangeForm(UserChangeForm):
         )
 
 
-class ProfileChangeForm(UserChangeForm):
+class ProfileChangeForm(BootstrapFormMixin, UserChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.visible_fields():
-            field.field.widget.attrs['class'] = 'form-control'
+        self.fields[Profile.coffee_count.field.name].disabled = True
 
     password = None
 
-    class Meta:
+    class Meta(UserChangeForm.Meta):
         model = Profile
         fields = (
             Profile.birthday.field.name,
             Profile.image.field.name,
+            Profile.coffee_count.field.name,
         )

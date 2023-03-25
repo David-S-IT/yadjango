@@ -1,5 +1,4 @@
 from django.contrib.auth.views import (
-    LoginView,
     LogoutView,
     PasswordChangeDoneView,
     PasswordChangeView,
@@ -20,7 +19,7 @@ app_name = 'users'
 urlpatterns = [
     path(
         'login/',
-        LoginView.as_view(
+        views.CustomLoginView.as_view(
             template_name='users/login.html',
         ),
         name='login',

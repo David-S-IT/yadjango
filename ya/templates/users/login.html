@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} Вход {% endblock %}
 {% block content %}
-  {% if user.is_authenticated %}
-    <head>
-      <meta http-equiv="REFRESH" content="0;url={% url 'homepage:index' %}">
-    </head>
-  {% endif %}
   <div class="container">
     <h1 class="text-center"> Войти </h1>
-    {% include 'includes/form.html' %}
+    {% with "Войти" as button_text %}
+      {% include 'includes/form.html' %}
+    {% endwith %}
     <p></p>
     <p class="text-center">
       <a href="{% url 'users:password_reset' %}">

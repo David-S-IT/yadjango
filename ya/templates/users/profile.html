@@ -3,6 +3,8 @@
 {% block content %}
   <div class="container">
     <h1 class="text-center"> Мой профиль </h1>
-    {% include 'includes/form.html' %}
+    {% with "Сохранить" as button_text %}
+      {% include 'includes/form.html' %}
+    {% endwith %}
   </div>
 {% endblock %}

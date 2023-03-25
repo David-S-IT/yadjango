@@ -67,21 +67,14 @@
         </div>
       {% endfor %}
 
-      <a class="w-50 btn btn-outline-info btn-lg d-grid gap-2 mx-auto"
-              role="button"
-              href="{% url 'users:password_reset' %}">
-        Изменить пароль
-      </a>
-      <hr>
-
-      <label for="id_coffee_count">Количество попыток сварить кофе:</label>
       <p>
-        <sub type="number" class="form-control"
-             id="id_coffee_count">{{ user_me.profile.coffee_count }}</sub>
+        <a class="w-50 btn btn-outline-info btn-lg d-grid gap-2 mx-auto"
+           role="button"
+           href="{% url 'users:password_change' %}">
+          Изменить пароль
+        </a>
       </p>
-      <p class="form-text text-muted">
-        Сколько чашек кофе вы пытались выпить.
-      </p>
+
       <p>
         <button class="w-75 btn btn-outline-secondary btn-lg d-grid gap-2 mx-auto"
                 type="submit"
@@ -94,22 +87,7 @@
 
     <button class="btn btn-outline-primary btn-lg d-grid gap-2 mx-auto"
             type="submit">
-      {% with request.resolver_match.view_name as view_name %}
-        {% if view_name == 'users:sign_up' %}
-          Зарегистрироваться
-        {% elif view_name == 'users:login' %}
-          Войти
-        {% elif view_name == 'users:password_change' %}
-          Сменить пароль
-        {% elif view_name == 'users:password_reset_confirm' %}
-          Изменить мой пароль
-        {% elif view_name == 'users:password_reset' %}
-          Восстановить мой пароль
-        {% elif view_name == 'users:profile' %}
-          Сохранить
-        {% endif %}
-      {% endwith %}
-
+      {{ button_text }}
     </button>
 
   </form>
