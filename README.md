@@ -31,7 +31,10 @@ cd yadjango
 - Windows:
 ```.\venv\Scripts\activate.bat```
 #### 5. Установить зависимости
-Обновить pip: ```venv/bin/python -m pip install --upgrade pip```  
+Обновить pip: 
+- Linux: ```venv/bin/python -m pip install --upgrade pip``` 
+- Windows: ```python.exe -m pip install --upgrade pip```  
+
 Перейти в папку requirements: ```cd requirements```
 - Основной - для запуска сервера: ```pip install -r requirements_prod.txt```
 - Дополнительный - для тестов: ```pip install -r requirements_test.txt```
@@ -66,7 +69,7 @@ print(get_random_secret_key())
 #### 9. Сайт доступен по адресу: http://127.0.0.1:8000/
 
 ## Фикстуры для наполнения базы
-Используйте фикстуры для тестов в папке ya, где manage.py
+Используйте фикстуры для тестов в папке ya, где manage.py  
 Чтобы загрузить фикстуры выполнить:
 ```bash
 python manage.py loaddata fixtures.json
@@ -75,7 +78,7 @@ python manage.py loaddata fixtures.json
 Пароль: adminadmin
 
 ## Чтобы создать своего суперпользователя с правами админа
-Выполнить и исполнить предложенные инструкции в консоли
+Выполнить и исполнить предложенные инструкции в консоли:
 ```bash
 python manage.py createsuperuser
 ```
